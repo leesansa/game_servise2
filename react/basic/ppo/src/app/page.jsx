@@ -1,6 +1,14 @@
-// 서버 컴포넌트. 상호작용이 필요한 부분(client.jsx)만 브라우저에서 hydrate 됨.
-import { Loader, Lore, Resonator, Sidebar } from '../client.jsx'
-import { Calendar, Echo, Gameplay, Home, Information, Notice } from '../sections.jsx'
+// 서버 컴포넌트. 'use client' 가 붙은 컴포넌트만 브라우저에서 hydrate 됨.
+import { Loader } from '../components/Loader.jsx'
+import { Sidebar } from '../components/Sidebar.jsx'
+import { Calendar } from '../components/sections/Calendar.jsx'
+import { Echo } from '../components/sections/Echo.jsx'
+import { Gameplay } from '../components/sections/Gameplay.jsx'
+import { Home } from '../components/sections/Home.jsx'
+import { Information } from '../components/sections/Information.jsx'
+import { Lore } from '../components/sections/Lore.jsx'
+import { Notice } from '../components/sections/Notice.jsx'
+import { Resonator } from '../components/sections/Resonator.jsx'
 
 export default function Page() {
   return (

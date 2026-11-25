@@ -1,6 +1,6 @@
 import { Archivo, Noto_Sans_KR, Noto_Serif_KR } from 'next/font/google'
 import './globals.css'
-import '../App.css'
+import '../styles/App.css'
 
 // 빌드할 때 받아서 자체 호스팅함. wdth 축으로 font-stretch: 125% 사용.
 const archivo = Archivo({ subsets: ['latin'], axes: ['wdth'], variable: '--font-en' })
