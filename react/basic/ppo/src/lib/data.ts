@@ -1,76 +1,19 @@
 // 페이지 데이터. 이미지는 public/images/ (명조 공식 사이트 에셋, 포트폴리오 전용).
 // shortcut: 공지는 정적 샘플, 일정은 subgamecals.com 기준 수동 입력, 서버 API가 생기면 schema.sql 의 news 테이블로 교체.
-import type { Calendar, Info, Notice, Region, Resonator, Section, Slide } from '@/types'
+import type { Calendar, Info, Notice, Region, Section, Slide, Term } from '@/types'
 
 export const SECTIONS: Section[] = [
   { id: 'home', en: 'HOME', kr: '홈' },
   { id: 'resonator', en: 'RESONATOR', kr: '공명자' },
   { id: 'lore', en: 'LORE', kr: '세계관' },
-  { id: 'information', en: 'INFORMATION', kr: '게임 정보' },
   { id: 'calendar', en: 'CALENDAR', kr: '버전 일정' },
   { id: 'gameplay', en: 'GAMEPLAY', kr: '콘텐츠 소개' },
   { id: 'echo', en: 'ECHO', kr: '에코 시스템' },
   { id: 'notice', en: 'NOTICE', kr: '공지' },
+  { id: 'information', en: 'INFORMATION', kr: '게임 정보' },
 ]
 
 export const PLATFORMS = ['Windows', 'App Store', 'Google Play', 'PlayStation 5']
-
-export const RESONATORS: Resonator[] = [
-  {
-    en: 'JINHSI',
-    img: '/images/reso-jinhsi.png',
-    name: '금희',
-    attr: '회절',
-    weapon: '대검',
-    rarity: 5,
-    desc: '금주의 영윤. 세세를 수호하며 금주의 안녕을 책임지는 젊은 지도자. 빛의 힘으로 적을 꿰뚫는다.',
-  },
-  {
-    en: 'CHANGLI',
-    img: '/images/reso-changli.png',
-    name: '장리',
-    attr: '용융',
-    weapon: '직검',
-    rarity: 5,
-    desc: '금주 영윤의 책사. 판 전체를 내다보는 지략가로, 불꽃을 다루는 검술로 전장을 장악한다.',
-  },
-  {
-    en: 'CAMELLYA',
-    img: '/images/reso-camellya.png',
-    name: '카멜리아',
-    attr: '인멸',
-    weapon: '직검',
-    rarity: 5,
-    desc: '흑해안에서 온 정체불명의 공명자. 덩굴과 꽃잎을 휘감은 공격으로 적을 몰아붙인다.',
-  },
-  {
-    en: 'YINLIN',
-    img: '/images/reso-yinlin.png',
-    name: '음림',
-    attr: '전도',
-    weapon: '증폭기',
-    rarity: 5,
-    desc: '꼭두각시 인형을 조종하는 공명자. 번개를 실어 보내는 원거리 연계에 능하다.',
-  },
-  {
-    en: 'XIANGLI YAO',
-    img: '/images/reso-xiangliyao.png',
-    name: '상리요',
-    attr: '전도',
-    weapon: '권갑',
-    rarity: 5,
-    desc: '화서 연구원의 수석 연구원. 기계 팔과 계산된 타격으로 전투를 풀어 나간다.',
-  },
-  {
-    en: 'ZHEZHI',
-    img: '/images/reso-zhezhi.png',
-    name: '절지',
-    attr: '응결',
-    weapon: '증폭기',
-    rarity: 5,
-    desc: '붓끝으로 그린 그림에 생명을 불어넣는 화가. 얼음 같은 필치로 적을 봉한다.',
-  },
-]
 
 export const REGIONS: Region[] = [
   {
@@ -100,17 +43,16 @@ export const INFO: Info[] = [
   { k: 'LAUNCH', label: '출시', v: '2024.05' },
 ]
 
-// 3.6 프리뷰 방송 ~ 3.8 종료 (21주). 출처: subgamecals.com 명조 일정·배너
-// 픽업 배너: 네이버 라운지 공식 「캐릭터 이벤트 튜닝」 공지 (12/03 은 공지 전이라 3.5 양양·현령 튜닝 배너)
+// 3.7 시작 주(9/28) ~ 3.8 종료 (13주). 이전 버전은 막대가 짧아져 안 보여 줌. 출처: subgamecals.com 명조 일정·배너
+// 픽업 배너: 네이버 라운지 공식 「캐릭터 이벤트 튜닝」 공지 (12/03 은 3.8 소개 이미지로 확인한 2차 튜닝 「깃털에 실은 만물의 소리」 배너)
 // 이어지는 일정은 교체일이 겹쳐도 됨: 막대는 end 전날까지 그려짐
 export const CALENDAR: Calendar = {
-  from: '2026-08-03',
+  from: '2026-09-28',
   to: '2026-12-27',
   lanes: [
     {
       label: '업데이트',
       items: [
-        { title: '3.6 『신기루 속 등불 그림자, 속세에 깃든 검의 결심』', start: '2026-08-20', end: '2026-09-30', img: '/images/ver-3.6.webp' },
         { title: '3.7 『거울에 잠긴 허상, 마음이 비추는 인간 세상』', start: '2026-09-30', end: '2026-11-12', img: '/images/ver-3.7.webp' },
         { title: '3.8 『아득한 꿈속, 잔잔히 스러진 백합』', start: '2026-11-12', end: '2026-12-24', img: '/images/ver-3.8.webp' },
       ],
@@ -118,8 +60,6 @@ export const CALENDAR: Calendar = {
     {
       label: '픽업',
       items: [
-        { title: '청초 · 데니아', start: '2026-08-20', end: '2026-09-10', img: '/images/tuning-0820.webp', pos: '55% 30%' },
-        { title: '경연 · 히유키 · 모니에', start: '2026-09-10', end: '2026-09-29', img: '/images/tuning-0910.webp', pos: '58% 30%' },
         { title: '여우의 별자리 · 유노 · 치사', start: '2026-09-30', end: '2026-10-22', img: '/images/tuning-0930.webp', pos: '72% 25%' },
         { title: '쇄명 · 린네 · 루실라', start: '2026-10-22', end: '2026-11-11', img: '/images/tuning-1022.webp', pos: '55% 30%' },
         { title: '릴리 · 시그리카 · 구원', start: '2026-11-12', end: '2026-12-03', img: '/images/tuning-1112.webp', pos: '63% 55%' },
@@ -142,16 +82,12 @@ export const CALENDAR: Calendar = {
     {
       label: '특별 방송',
       items: [
-        { title: '3.6 프리뷰 특별 방송', start: '2026-08-07', end: '2026-08-07' },
-        { title: '3.7 프리뷰 특별 방송', start: '2026-09-19', end: '2026-09-19' },
         { title: '3.8 프리뷰 특별 방송', start: '2026-11-06', end: '2026-11-06' },
       ],
     },
     {
       label: '콜라보·행사',
       items: [
-        { title: '명조 X 도미노피자', start: '2026-08-21', end: '2026-09-17', img: '/images/collab-0821.webp' },
-        { title: '월드 투어 「To the New World」', start: '2026-08-29', end: '2026-08-29' },
         { title: '명조 X 롯데시네마', start: '2026-10-19', end: '2026-11-01', img: '/images/collab-1019.webp' },
       ],
     },
@@ -164,10 +100,32 @@ export const GAMEPLAY: Slide[] = [
   { img: '/images/play-3.webp', title: '잔상 토벌', desc: '필드를 배회하는 강력한 잔상과 맞서고 보상을 획득한다.' },
 ]
 
-export const ECHO: Slide[] = [
-  { img: '/images/echo-1.webp', title: '에코 흡수', desc: '쓰러뜨린 잔상을 흡수해 그 힘을 에코로 손에 넣는다.' },
-  { img: '/images/echo-2.webp', title: '에코 스킬', desc: '전투 중 에코로 변신하거나 소환해 강력한 스킬을 발동한다.' },
-  { img: '/images/echo-3.webp', title: '하모니 세트', desc: '같은 계열 에코를 모아 장착하면 세트 효과가 발동한다.' },
+// 에코 시스템: 공식 사이트 「정보」의 세계관 용어 중 에코와 이어지는 것들 (무음구역에서 잔상이 태어나고 → 처치하면 에코 → 최상위 잔상 명식)
+export const ECHO: Term[] = [
+  {
+    en: 'TACET FIELD',
+    name: '무음구역',
+    img: '/images/echo/tacet-field.webp',
+    desc: '현재 학계에서는 「무음구역」이 잔상이 탄생하는 곳이라고 생각하며, 무음구역이 형성될 때는 하늘을 뒤덮은 거꾸로 된 바다가 보이는 현상과 땅을 깊숙이 가르는 십자형 성흔 현상이 동반되는 경우가 많다. 무음구역에서는 수많은 잔향이 계속해서 반사, 교차, 중첩되고, 강렬한 흰빛이 현실과 그 반대편의 미지의 공간을 연결하며, 그 결과 무수한 잔상이 무음구역에 소환된다.',
+  },
+  {
+    en: 'TACET DISCORD',
+    name: '잔상',
+    img: '/images/echo/tacet-discord.webp',
+    desc: '비명 이후에 탄생해 인류의 적이 된 미증유의 존재들. 혼란스러운 주파수 에너지로 구성된 유사 생명체로서 특수 구조인 「성핵」을 가지고 있다. 잔상의 본능은 다른 주파수를 흡수 병합함으로써 자신의 안정성을 유지하고, 심지어는 진화하려는 것으로 사냥과 포식에 집착하는 행동 패턴을 보인다. 그들의 능력, 외형, 행동은 주파수 구성의 차이로 인해 달라지며, 형태가 매우 다양하긴 하지만 대부분은 사람과 비슷한 형태다.',
+  },
+  {
+    en: 'ECHO',
+    name: '에코',
+    img: '/images/echo/echo.webp',
+    desc: '「잔상」의 능력을 반고 단말기로 포착하거나, 이용하거나, 재현할 수 있는 특별한 주파수. 「잔상」을 처치한 후 일정 확률로 상응하는 「잔향」이 남겨진다.「잔향」은 단말기의 데이터 스테이션을 통해 「에코」로 변환되어, 전투에서 이용할 수 있는 힘이 된다.',
+  },
+  {
+    en: 'THRENODIAN',
+    name: '명식',
+    img: '/images/echo/threnodian.webp',
+    desc: '잔상류 중 최상급의 파괴력을 가진 잔상. 인류가 자랑하는 문명과 성숙한 정신을 파괴하려는 욕망을 가지고 있으며, 인류의 절망을 자신의 「식량」으로 삼는다. 「비명」과 함께 태어난 끔찍한 「잔상」들을 동반한다. 만약 문명이 인류의 건강한 의지의 응집이라면, 「명식」은 그 뒤에 숨겨진 어두운 걱정과 은밀한 악의의 응집이다.',
+  },
 ]
 
 export const NOTICES: Notice[] = [

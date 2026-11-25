@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { NOTICES } from '@/lib/data'
 import { SectionTitle } from '@/components/common/SectionTitle'
 
@@ -17,10 +16,6 @@ export function Notice() {
           </li>
         ))}
       </ul>
-      <footer className="foot">
-        <Image src="/images/logo-small-kr.png" alt="명조" width={100} height={40} />
-        <p>포트폴리오용 비공식 페이지입니다. 「명조: 워더링 웨이브」의 모든 권리는 KURO GAMES에 있습니다.</p>
-      </footer>
     </section>
   )
 }

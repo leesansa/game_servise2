@@ -28,6 +28,8 @@ export function Loader() {
     <div className={`loader${pct >= 100 ? ' is-out' : ''}`} role="progressbar" aria-valuenow={pct} aria-label="로딩">
       <span className="loader__bar" style={{ height: `${pct}%` }} />
       <p className="loader__pct">{pct}%</p>
+      {/* 가운데서 양옆으로 넓어지는 진행 바 */}
+      <span className="loader__line" style={{ '--p': pct / 100 } as React.CSSProperties} aria-hidden="true" />
       <Image className="loader__logo" src="/images/logo-kr.png" alt="명조: 워더링 웨이브" width={1339} height={890} priority />
     </div>
   )

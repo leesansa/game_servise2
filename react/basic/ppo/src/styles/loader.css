@@ -29,6 +29,39 @@
   letter-spacing: 0.3em;
   color: var(--c-gold);
 }
+/* 퍼센트 아래 진행 바: 흐린 트랙 위로 금색 선이 가운데서 양옆으로 늘어남 (--p: 0~1) */
+.loader__line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(18% - 18px);
+  height: 1px;
+  background: var(--c-gold-line);
+  opacity: 0.9;
+}
+.loader__line::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, var(--c-gold-hi) 8%, var(--c-gold-hi) 92%, transparent);
+  box-shadow: 0 0 10px var(--c-gold);
+  transform: scaleX(var(--p, 0));
+  transform-origin: center;
+  transition: transform 0.15s linear;
+}
+/* 가운데 마름모 */
+.loader__line::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  background: var(--c-gold-hi);
+  translate: -50% -50%;
+  rotate: 45deg;
+  box-shadow: 0 0 8px var(--c-gold);
+}
 .loader__logo {
   width: min(320px, 60vw);
   height: auto;

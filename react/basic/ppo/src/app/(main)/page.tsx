@@ -14,11 +14,11 @@ const Page = () => {
       <Home />
       <Resonator />
       <Lore />
-      <Information />
       <Calendar />
       <Gameplay />
       <Echo />
       <Notice />
+      <Information />
     </main>
   )
 }

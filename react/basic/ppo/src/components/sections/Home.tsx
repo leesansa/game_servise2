@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { PLATFORMS } from '@/lib/data'
 import { Img } from '@/components/common/Img'
 import { Marquee } from '@/components/common/Marquee'
+import { PlatformIcon } from '@/components/common/PlatformIcon'
 
 export function Home() {
   return (
@@ -19,6 +20,7 @@ export function Home() {
           {PLATFORMS.map((p) => (
             <li key={p}>
               <a href="#home" className="btn cut">
+                <PlatformIcon name={p} />
                 {p}
               </a>
             </li>

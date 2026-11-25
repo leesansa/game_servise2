@@ -55,6 +55,19 @@
   color: var(--c-gold-hi);
   text-shadow: 0 0 10px rgba(218, 182, 125, 0.6);
 }
+/* 섹션 아이콘 (SectionIcon) */
+.side__icon {
+  width: 22px;
+  height: 22px;
+  transition: transform var(--t), filter var(--t);
+}
+.side__nav a:hover .side__icon {
+  transform: scale(1.1);
+}
+/* SVG 는 text-shadow 가 안 먹어서 drop-shadow 로 빛 번짐 */
+.side__nav a.is-on .side__icon {
+  filter: drop-shadow(0 0 6px rgba(218, 182, 125, 0.7));
+}
 .side__nav a.is-on::before {
   opacity: 1;
 }

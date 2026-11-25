@@ -2,6 +2,7 @@
 import { useActiveSection } from '@/hooks/useActiveSection'
 import { useReveal } from '@/hooks/useReveal'
 import { SECTIONS } from '@/lib/data'
+import { SectionIcon } from '@/components/common/SectionIcon'
 
 export function Sidebar() {
   const active = useActiveSection()
@@ -14,14 +15,16 @@ export function Sidebar() {
       </a>
       <nav aria-label="섹션">
         <ul className="side__nav">
-          {SECTIONS.map((s, n) => (
+          {SECTIONS.map((s) => (
             <li key={s.id}>
               <a
                 href={`#${s.id}`}
                 className={s.id === active ? 'is-on' : ''}
                 aria-current={s.id === active ? 'true' : undefined}
+                // 모바일에선 라벨이 숨겨지므로 링크 이름을 직접 줌
+                aria-label={s.kr}
               >
-                <span className="side__num">{String(n + 1).padStart(2, '0')}</span>
+                <SectionIcon id={s.id} />
                 <span className="side__label">
                   {s.en}
                   <small>{s.kr}</small>

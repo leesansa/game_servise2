@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { Img } from '@/components/common/Img'
+import { Chevron } from '@/components/common/Chevron'
 import type { Slide } from '@/types'
 
 // 이미지 + 세로 라벨 + 캡션 + 좌우 화살표. reverse 면 좌우 반전(엔드필드 gameplay/aic 패턴).
@@ -19,13 +20,13 @@ export function Slider({ items, label, reverse }: { items: Slide[]; label: strin
       <div className="slider__foot">
         <div className="slider__nav">
           <button type="button" onClick={() => go(-1)} aria-label="이전">
-            ‹
+            <Chevron dir="left" />
           </button>
           <span className="slider__count">
             {String(i + 1).padStart(2, '0')} / {String(items.length).padStart(2, '0')}
           </span>
           <button type="button" onClick={() => go(1)} aria-label="다음">
-            ›
+            <Chevron dir="right" />
           </button>
         </div>
         <div className="slider__text" key={i} aria-live="polite">

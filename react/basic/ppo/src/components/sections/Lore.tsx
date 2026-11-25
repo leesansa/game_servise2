@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import { REGIONS } from '@/lib/data'
 import { Img } from '@/components/common/Img'
+import { Chevron } from '@/components/common/Chevron'
 import { SectionTitle } from '@/components/common/SectionTitle'
 
 export function Lore() {
@@ -23,13 +24,13 @@ export function Lore() {
           <p className="lore__sub">WUTHERING WAVES</p>
           <div className="lore__nav">
             <button type="button" onClick={() => go(-1)} aria-label="이전 지역">
-              ‹
+              <Chevron dir="left" />
             </button>
             <span>
               <sup>{String(i + 1).padStart(2, '0')}</sup> {r.name}
             </span>
             <button type="button" onClick={() => go(1)} aria-label="다음 지역">
-              ›
+              <Chevron dir="right" />
             </button>
           </div>
           <p className="lore__desc">{r.desc}</p>

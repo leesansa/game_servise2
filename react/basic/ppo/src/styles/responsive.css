@@ -33,6 +33,7 @@
   .sec {
     padding: 88px 20px;
   }
+  .echo__grid,
   .reso__body,
   .lore__body,
   .play__grid,
@@ -40,8 +41,13 @@
     grid-template-columns: 1fr;
   }
   .reso__list {
-    flex-direction: row;
+    display: flex;
+    max-height: none;
     overflow-x: auto;
+    overflow-y: hidden;
+  }
+  .reso__list li {
+    flex-shrink: 0;
   }
   .play__grid.is-reverse .sec-title {
     order: 0;
@@ -60,6 +66,12 @@
     align-items: flex-start;
   }
   /* 모바일: 막대가 너무 좁아 글자가 안 들어가므로 일정마다 한 줄 꽉 채운 목록으로 */
+  .echo__cards {
+    height: 340px;
+  }
+  .echo__info {
+    min-height: 0;
+  }
   .cal__board {
     padding: 0 12px 16px;
   }
