@@ -1,122 +1,103 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
+import { useEffect, useState } from 'react'
+import { SECTIONS } from './data.js'
+import { GlitchFilter, Loader } from './ui.jsx'
+import { Calendar, Echo, Gameplay, Home, Information, Lore, Notice, Resonator } from './sections.jsx'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+function useActiveSection() {
+  const [active, setActive] = useState(SECTIONS[0].id)
+  useEffect(() => {
+    // 화면 세로 가운데 줄에 걸린 섹션을 활성으로
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (!e.isIntersecting) continue
+          setActive(e.target.id)
+          history.replaceState(null, '', `#${e.target.id}`)
+        }
+      },
+      { rootMargin: '-50% 0px -50% 0px' },
+    )
+    SECTIONS.forEach((s) => {
+      const el = document.getElementById(s.id)
+      if (el) io.observe(el)
+    })
+    return () => io.disconnect()
+  }, [])
+  return active
+}
 
+function useReveal() {
+  useEffect(() => {
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (!e.isIntersecting) continue
+          e.target.classList.add('is-in')
+          io.unobserve(e.target)
+        }
+      },
+      { threshold: 0.15 },
+    )
+    document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el))
+    return () => io.disconnect()
+  }, [])
+}
+
+function Sidebar({ active }) {
+  const idx = SECTIONS.findIndex((s) => s.id === active)
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
+    <header className="side">
+      <a href="#home" className="side__logo" aria-label="명조 홈">
+        명<br />조
+      </a>
+      <nav aria-label="섹션">
+        <ul className="side__nav">
+          {SECTIONS.map((s, n) => (
+            <li key={s.id}>
+              <a
+                href={`#${s.id}`}
+                className={s.id === active ? 'is-on' : ''}
+                aria-current={s.id === active ? 'true' : undefined}
+              >
+                <span className="side__num">{String(n + 1).padStart(2, '0')}</span>
+                <span className="side__label">
+                  {s.en}
+                  <small>{s.kr}</small>
+                </span>
               </a>
             </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+          ))}
+        </ul>
+      </nav>
+      <div className="side__progress" aria-hidden="true">
+        <span style={{ height: `${((idx + 1) / SECTIONS.length) * 100}%` }} />
+      </div>
+      <p className="side__badge" aria-hidden="true">
+        SOLARIS-3
+      </p>
+    </header>
   )
 }
 
-export default App
+export default function App() {
+  const active = useActiveSection()
+  useReveal()
+  return (
+    <>
+      <Loader />
+      <GlitchFilter />
+      <Sidebar active={active} />
+      <main className="page">
+        <Home />
+        <Resonator />
+        <Lore />
+        <Information />
+        <Calendar />
+        <Gameplay />
+        <Echo />
+        <Notice />
+      </main>
+    </>
+  )
+}
