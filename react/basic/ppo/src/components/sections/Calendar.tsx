@@ -1,27 +1,28 @@
 'use client'
 import { useSyncExternalStore } from 'react'
-import { CALENDAR } from '@/lib/data'
+import type { Calendar as CalendarData } from '@/types'
 import { Img } from '@/components/common/Img'
 import { SectionTitle } from '@/components/common/SectionTitle'
 
 const DAY = 864e5
-const { from, to, lanes } = CALENDAR
-// 'YYYY-MM-DD' 는 UTC 자정으로 파싱되므로 시간대와 무관하게 날짜 차이만 나옴
-const dayOf = (date: string) => Math.round((Date.parse(date) - Date.parse(from)) / DAY)
-const DAYS = dayOf(to) + 1
-const WEEKS = Array.from({ length: Math.ceil(DAYS / 7) }, (_, w) => new Date(Date.parse(from) + w * 7 * DAY))
 const md = (date: string) => date.slice(5).replace('-', '.')
 
-// 오늘 날짜는 브라우저에서만 계산 (정적 빌드 시점 날짜가 박히지 않게)
-const todayDay = () => {
+// 오늘 날짜(브라우저 기준 'YYYY-MM-DD')는 브라우저에서만 계산 (서버 렌더 시점 날짜가 박히지 않게)
+const todayYmd = () => {
   const d = new Date()
-  return dayOf(`${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`)
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
 }
 const noop = () => () => {}
 
 // 엔드필드 #calendar 패턴: 날짜 줄은 위에 붙어 있고, 일정은 한 줄에 하나씩 세로로 이어짐
-export function Calendar() {
-  const today = useSyncExternalStore(noop, todayDay, () => null)
+export function Calendar({ calendar }: { calendar: CalendarData }) {
+  const { from, to, lanes } = calendar
+  // 'YYYY-MM-DD' 는 UTC 자정으로 파싱되므로 시간대와 무관하게 날짜 차이만 나옴
+  const dayOf = (date: string) => Math.round((Date.parse(date) - Date.parse(from)) / DAY)
+  const DAYS = dayOf(to) + 1
+  const WEEKS = Array.from({ length: Math.ceil(DAYS / 7) }, (_, w) => new Date(Date.parse(from) + w * 7 * DAY))
+  const ymd = useSyncExternalStore(noop, todayYmd, () => null)
+  const today = ymd === null ? null : dayOf(ymd)
   const inRange = today !== null && today >= 0 && today < DAYS
 
   return (

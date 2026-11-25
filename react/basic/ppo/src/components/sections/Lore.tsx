@@ -1,14 +1,14 @@
 'use client'
 import { useState } from 'react'
-import { REGIONS } from '@/lib/data'
+import type { Region } from '@/types'
 import { Img } from '@/components/common/Img'
 import { Chevron } from '@/components/common/Chevron'
 import { SectionTitle } from '@/components/common/SectionTitle'
 
-export function Lore() {
+export function Lore({ regions }: { regions: Region[] }) {
   const [i, setI] = useState(0)
-  const r = REGIONS[i]
-  const go = (d: number) => setI((i + d + REGIONS.length) % REGIONS.length)
+  const r = regions[i]
+  const go = (d: number) => setI((i + d + regions.length) % regions.length)
   return (
     <section id="lore" className="sec lore is-dark">
       <SectionTitle en="LORE" kr="세계관 소개" dark />

@@ -1,13 +1,13 @@
 import Image from 'next/image'
-import { INFO } from '@/lib/data'
+import type { Info } from '@/types'
 import { SectionTitle } from '@/components/common/SectionTitle'
 
-export function Information() {
+export function Information({ info }: { info: Info[] }) {
   return (
     <section id="information" className="sec info is-dark">
       <SectionTitle en="INFORMATION" kr="게임 정보" dark />
       <ul className="info__grid">
-        {INFO.map((x, n) => (
+        {info.map((x, n) => (
           <li key={x.k} className="info__card cut" data-reveal style={{ transitionDelay: `${n * 80}ms` }}>
             <p className="info__k">{x.k}</p>
             <p className="info__label">{x.label}</p>

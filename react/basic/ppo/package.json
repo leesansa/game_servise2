@@ -4,22 +4,33 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "vite dev --port 3000",
+    "build": "vite build",
+    "start": "vite preview",
+    "deploy": "vinext-cloudflare deploy",
     "lint": "eslint .",
-    "start": "next start"
+    "db:setup": "node --env-file=.env db/setup.mjs"
   },
   "dependencies": {
+    "@vinext/cloudflare": "^1.4.0",
     "next": "^16.4.6",
+    "postgres": "^4.1.1",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react-dom": "^19.2.8",
+    "react-server-dom-webpack": "^19.3.1",
+    "vinext": "^1.4.6"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^2.0.0-rc.5",
     "@types/node": "^26.6.7",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.3.0",
+    "@vitejs/plugin-rsc": "^0.5.39",
+    "cf": "^1.0.0-rc.5",
     "eslint": "^10.10.0",
     "eslint-config-next": "^16.4.6",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "vite": "^8.3.0"
   }
 }

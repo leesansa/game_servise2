@@ -1,12 +1,12 @@
-import { NOTICES } from '@/lib/data'
+import type { Notice as NoticeItem } from '@/types'
 import { SectionTitle } from '@/components/common/SectionTitle'
 
-export function Notice() {
+export function Notice({ notices }: { notices: NoticeItem[] }) {
   return (
     <section id="notice" className="sec notice is-dark">
       <SectionTitle en="NOTICE" kr="공지" dark />
       <ul className="notice__list">
-        {NOTICES.map((x, n) => (
+        {notices.map((x, n) => (
           <li key={n} data-reveal style={{ transitionDelay: `${n * 70}ms` }}>
             <a href="#notice">
               <em>{x.tag}</em>

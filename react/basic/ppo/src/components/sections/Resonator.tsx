@@ -1,15 +1,15 @@
 'use client'
 import Image from 'next/image'
 import { useState } from 'react'
-import { FACTIONS } from '@/lib/resonators'
+import type { Faction } from '@/types'
 import { Img } from '@/components/common/Img'
 import { SectionTitle } from '@/components/common/SectionTitle'
 
 // 공식 사이트처럼 진영 → 공명자 2단 선택
-export function Resonator() {
+export function Resonator({ factions }: { factions: Faction[] }) {
   const [f, setF] = useState(0)
   const [i, setI] = useState(0)
-  const faction = FACTIONS[f]
+  const faction = factions[f]
   const r = faction.roles[i]
   const pickFaction = (n: number) => {
     setF(n)
@@ -23,7 +23,7 @@ export function Resonator() {
       <SectionTitle en="RESONATOR" kr="공명자" />
 
       <ul className="reso__factions" role="tablist" aria-label="진영 선택">
-        {FACTIONS.map((g, n) => (
+        {factions.map((g, n) => (
           <li key={g.id}>
             <button type="button" role="tab" aria-selected={n === f} className={n === f ? 'is-on' : ''} onClick={() => pickFaction(n)}>
               {g.icon && <Image src={g.icon} alt="" width={36} height={36} className="reso__faction-icon" />}
