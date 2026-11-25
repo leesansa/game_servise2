@@ -1,17 +1,18 @@
-import { useState } from 'react'
-import { CALENDAR, ECHO, GAMEPLAY, INFO, NOTICES, PLATFORMS, REGIONS, RESONATORS } from './data.js'
-import { Marquee, Ph, SectionTitle, Slider } from './ui.jsx'
+// 서버 컴포넌트: 상태 없는 섹션. 상호작용은 client.jsx 의 Slider 등에 맡김.
+import Image from 'next/image'
+import { Slider } from './client.jsx'
+import { CALENDAR, ECHO, GAMEPLAY, INFO, NOTICES, PLATFORMS } from './data.js'
+import { Img, Marquee, SectionTitle } from './ui.jsx'
 
 export function Home() {
   return (
     <section id="home" className="sec home">
-      <Ph label="KEY VISUAL 1920×1080" className="home__bg" />
+      <Img src="/images/home-kv.webp" className="home__bg" priority />
       <div className="home__inner">
         <div className="home__logo" data-reveal>
           <p className="home__kicker">OPEN WORLD ACTION RPG</p>
-          <h1 className="glitch">
-            명조
-            <span>WUTHERING WAVES</span>
+          <h1>
+            <Image src="/images/logo-kr.png" alt="명조: 워더링 웨이브" width={1339} height={890} priority />
           </h1>
           <p className="home__tag">BEYOND THE LAMENT // INTO SOLARIS-3</p>
         </div>
@@ -29,95 +30,6 @@ export function Home() {
         SCROLL
       </a>
       <Marquee text="WUTHERING WAVES // SOLARIS-3 // RESONATOR // ECHO" />
-    </section>
-  )
-}
-
-export function Resonator() {
-  const [i, setI] = useState(0)
-  const r = RESONATORS[i]
-  return (
-    <section id="resonator" className="sec reso">
-      <p className="outline reso__bg-text" aria-hidden="true">
-        RESONATOR
-      </p>
-      <SectionTitle en="RESONATOR" kr="공명자" />
-      <div className="reso__body">
-        <ul className="reso__list" role="tablist" aria-label="공명자 선택">
-          {RESONATORS.map((c, n) => (
-            <li key={c.en}>
-              <button
-                type="button"
-                role="tab"
-                aria-selected={n === i}
-                className={n === i ? 'is-on' : ''}
-                onClick={() => setI(n)}
-              >
-                <Ph label={c.name} className="reso__thumb" />
-              </button>
-            </li>
-          ))}
-        </ul>
-        <div className="reso__art" key={r.en}>
-          <Ph label={`${r.name} 일러스트`} />
-        </div>
-        <div className="reso__info" key={`${r.en}-info`}>
-          <p className="reso__en">{r.en}</p>
-          <h3 className="reso__name">
-            <span>[</span> {r.name} <span>]</span>
-          </h3>
-          <p className="reso__stars" aria-label={`${r.rarity}성`}>
-            {'★'.repeat(r.rarity)}
-          </p>
-          <dl className="reso__spec">
-            <div>
-              <dt>속성</dt>
-              <dd>{r.attr}</dd>
-            </div>
-            <div>
-              <dt>무기</dt>
-              <dd>{r.weapon}</dd>
-            </div>
-          </dl>
-          <p className="reso__desc">{r.desc}</p>
-        </div>
-      </div>
-      <div className="reso__band" aria-hidden="true" />
-    </section>
-  )
-}
-
-export function Lore() {
-  const [i, setI] = useState(0)
-  const r = REGIONS[i]
-  const go = (d) => setI((i + d + REGIONS.length) % REGIONS.length)
-  return (
-    <section id="lore" className="sec lore is-dark">
-      <SectionTitle en="LORE" kr="세계관 소개" dark />
-      <div className="lore__body">
-        <div className="lore__visual">
-          <span className="ring ring--1" aria-hidden="true" />
-          <span className="ring ring--2" aria-hidden="true" />
-          <span className="ring ring--3" aria-hidden="true" />
-          <Ph key={r.en} label={`${r.name} 지역 이미지`} className="lore__img" />
-        </div>
-        <div className="lore__info" key={`${r.en}-i`}>
-          <p className="lore__en glitch">{r.en}</p>
-          <p className="lore__sub">WUTHERING WAVES</p>
-          <div className="lore__nav">
-            <button type="button" onClick={() => go(-1)} aria-label="이전 지역">
-              ‹
-            </button>
-            <span>
-              <sup>{String(i + 1).padStart(2, '0')}</sup> {r.name}
-            </span>
-            <button type="button" onClick={() => go(1)} aria-label="다음 지역">
-              ›
-            </button>
-          </div>
-          <p className="lore__desc">{r.desc}</p>
-        </div>
-      </div>
     </section>
   )
 }
@@ -170,8 +82,8 @@ export function Calendar() {
 export function Gameplay() {
   return (
     <section id="gameplay" className="sec play">
-      <p className="play__giant glitch" data-reveal>
-        //WUTHERING
+      <p className="play__giant glow" data-reveal>
+        {'//WUTHERING'}
       </p>
       <div className="play__grid">
         <SectionTitle en="GAMEPLAY" kr="콘텐츠 소개" />
@@ -208,6 +120,7 @@ export function Notice() {
         ))}
       </ul>
       <footer className="foot">
+        <Image src="/images/logo-small-kr.png" alt="명조" width={100} height={40} />
         <p>포트폴리오용 비공식 페이지입니다. 「명조: 워더링 웨이브」의 모든 권리는 KURO GAMES에 있습니다.</p>
       </footer>
     </section>

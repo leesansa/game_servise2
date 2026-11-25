@@ -1,4 +1,4 @@
-// 페이지 텍스트 데이터. 이미지는 아직 없어서 각 컴포넌트가 플레이스홀더를 그림.
+// 페이지 데이터. 이미지는 public/images/ (명조 공식 사이트 에셋, 포트폴리오 전용).
 // shortcut: 공지·일정은 정적 샘플, 서버 API가 생기면 schema.sql 의 news 테이블로 교체.
 
 export const SECTIONS = [
@@ -17,6 +17,7 @@ export const PLATFORMS = ['Windows', 'App Store', 'Google Play', 'PlayStation 5'
 export const RESONATORS = [
   {
     en: 'JINHSI',
+    img: '/images/reso-jinhsi.png',
     name: '금희',
     attr: '회절',
     weapon: '대검',
@@ -25,6 +26,7 @@ export const RESONATORS = [
   },
   {
     en: 'CHANGLI',
+    img: '/images/reso-changli.png',
     name: '장리',
     attr: '용융',
     weapon: '직검',
@@ -33,6 +35,7 @@ export const RESONATORS = [
   },
   {
     en: 'CAMELLYA',
+    img: '/images/reso-camellya.png',
     name: '카멜리아',
     attr: '인멸',
     weapon: '직검',
@@ -41,6 +44,7 @@ export const RESONATORS = [
   },
   {
     en: 'YINLIN',
+    img: '/images/reso-yinlin.png',
     name: '음림',
     attr: '전도',
     weapon: '증폭기',
@@ -49,6 +53,7 @@ export const RESONATORS = [
   },
   {
     en: 'XIANGLI YAO',
+    img: '/images/reso-xiangliyao.png',
     name: '상리요',
     attr: '전도',
     weapon: '권갑',
@@ -57,6 +62,7 @@ export const RESONATORS = [
   },
   {
     en: 'ZHEZHI',
+    img: '/images/reso-zhezhi.png',
     name: '절지',
     attr: '응결',
     weapon: '증폭기',
@@ -68,16 +74,19 @@ export const RESONATORS = [
 export const REGIONS = [
   {
     en: 'JINZHOU',
+    img: '/images/lore-jinzhou.jpg',
     name: '금주',
     desc: '황룡 지역의 중심 도시. 세세의 비호 아래 번영한 성채 도시로, 잔상의 위협에 맞서는 최전선이기도 하다.',
   },
   {
     en: 'RINASCITA',
+    img: '/images/lore-rinascita.webp',
     name: '리나시타',
     desc: '바다 위에 펼쳐진 축제의 공화국. 화려한 거리 뒤편에는 오래된 신앙과 비밀이 숨어 있다.',
   },
   {
     en: 'BLACK SHORES',
+    img: '/images/lore-black-shores.jpg',
     name: '흑해안',
     desc: '시간이 멈춘 듯한 해안. 비명 이후의 세계와 방랑자의 과거를 잇는 수수께끼의 장소.',
   },
@@ -103,15 +112,15 @@ export const CALENDAR = {
 }
 
 export const GAMEPLAY = [
-  { title: '자유 탐색', desc: '벽 타기, 활공, 그래플로 솔라리스-3의 지형을 막힘없이 누빈다.' },
-  { title: '액션 전투', desc: '퍼펙트 회피와 반격, 변주·협주 스킬 연계로 이어지는 빠른 전투.' },
-  { title: '잔상 토벌', desc: '필드를 배회하는 강력한 잔상과 맞서고 보상을 획득한다.' },
+  { img: '/images/play-1.webp', title: '자유 탐색', desc: '벽 타기, 활공, 그래플로 솔라리스-3의 지형을 막힘없이 누빈다.' },
+  { img: '/images/play-2.webp', title: '액션 전투', desc: '퍼펙트 회피와 반격, 변주·협주 스킬 연계로 이어지는 빠른 전투.' },
+  { img: '/images/play-3.webp', title: '잔상 토벌', desc: '필드를 배회하는 강력한 잔상과 맞서고 보상을 획득한다.' },
 ]
 
 export const ECHO = [
-  { title: '에코 흡수', desc: '쓰러뜨린 잔상을 흡수해 그 힘을 에코로 손에 넣는다.' },
-  { title: '에코 스킬', desc: '전투 중 에코로 변신하거나 소환해 강력한 스킬을 발동한다.' },
-  { title: '하모니 세트', desc: '같은 계열 에코를 모아 장착하면 세트 효과가 발동한다.' },
+  { img: '/images/echo-1.webp', title: '에코 흡수', desc: '쓰러뜨린 잔상을 흡수해 그 힘을 에코로 손에 넣는다.' },
+  { img: '/images/echo-2.webp', title: '에코 스킬', desc: '전투 중 에코로 변신하거나 소환해 강력한 스킬을 발동한다.' },
+  { img: '/images/echo-3.webp', title: '하모니 세트', desc: '같은 계열 에코를 모아 장착하면 세트 효과가 발동한다.' },
 ]
 
 export const NOTICES = [

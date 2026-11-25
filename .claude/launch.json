@@ -4,8 +4,8 @@
     {
       "name": "ppo",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--prefix", "react/basic/ppo", "--", "--port", "5173", "--strictPort"],
-      "port": 5173
+      "runtimeArgs": ["run", "dev", "--prefix", "react/basic/ppo"],
+      "port": 3000
     }
   ]
 }
