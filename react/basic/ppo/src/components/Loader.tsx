@@ -8,11 +8,11 @@ export function Loader() {
   const [done, setDone] = useState(false)
 
   useEffect(() => {
-    let raf
+    let raf = 0
     let ready = false
     const t0 = performance.now()
     document.fonts.ready.then(() => (ready = true))
-    const tick = (t) => {
+    const tick = (t: number) => {
       // 준비 전에는 90% 에서 멈춤
       const p = Math.min(ready ? 100 : 90, ((t - t0) / 1400) * 100)
       setPct(Math.floor(p))

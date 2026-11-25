@@ -1,0 +1,42 @@
+/* ───────── 로더 ───────── */
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background: var(--c-black);
+  transition: opacity 0.5s var(--ease);
+}
+.loader.is-out {
+  opacity: 0;
+}
+.loader__bar {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(transparent, var(--c-gold));
+  box-shadow: 0 0 12px var(--c-gold);
+}
+.loader__pct {
+  position: absolute;
+  left: 50%;
+  bottom: 18%;
+  translate: -50% 0;
+  font: 500 14px var(--f-en);
+  font-stretch: 125%;
+  letter-spacing: 0.3em;
+  color: var(--c-gold);
+}
+.loader__logo {
+  width: min(320px, 60vw);
+  height: auto;
+  animation: breathe 2.4s ease-in-out infinite;
+}
+@keyframes breathe {
+  50% {
+    opacity: 0.55;
+  }
+}
+

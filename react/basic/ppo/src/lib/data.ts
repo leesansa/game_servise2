@@ -1,7 +1,8 @@
 // 페이지 데이터. 이미지는 public/images/ (명조 공식 사이트 에셋, 포트폴리오 전용).
 // shortcut: 공지·일정은 정적 샘플, 서버 API가 생기면 schema.sql 의 news 테이블로 교체.
+import type { Calendar, Info, Notice, Region, Resonator, Section, Slide } from '@/types'
 
-export const SECTIONS = [
+export const SECTIONS: Section[] = [
   { id: 'home', en: 'HOME', kr: '홈' },
   { id: 'resonator', en: 'RESONATOR', kr: '공명자' },
   { id: 'lore', en: 'LORE', kr: '세계관' },
@@ -14,7 +15,7 @@ export const SECTIONS = [
 
 export const PLATFORMS = ['Windows', 'App Store', 'Google Play', 'PlayStation 5']
 
-export const RESONATORS = [
+export const RESONATORS: Resonator[] = [
   {
     en: 'JINHSI',
     img: '/images/reso-jinhsi.png',
@@ -71,7 +72,7 @@ export const RESONATORS = [
   },
 ]
 
-export const REGIONS = [
+export const REGIONS: Region[] = [
   {
     en: 'JINZHOU',
     img: '/images/lore-jinzhou.jpg',
@@ -92,7 +93,7 @@ export const REGIONS = [
   },
 ]
 
-export const INFO = [
+export const INFO: Info[] = [
   { k: 'GENRE', label: '장르', v: '오픈월드 액션 RPG' },
   { k: 'PLATFORM', label: '플랫폼', v: 'PC · iOS · Android · PS5' },
   { k: 'DEVELOPER', label: '개발', v: 'KURO GAMES' },
@@ -100,7 +101,7 @@ export const INFO = [
 ]
 
 // 예시 일정: start/end 는 타임라인 열 번호(0부터), 실제 날짜 아님
-export const CALENDAR = {
+export const CALENDAR: Calendar = {
   cols: ['W1', 'W2', 'W3', 'W4', 'W5', 'W6'],
   rows: [
     { tag: '공명자', title: '이벤트 획득 1부', start: 0, end: 3 },
@@ -111,19 +112,19 @@ export const CALENDAR = {
   ],
 }
 
-export const GAMEPLAY = [
+export const GAMEPLAY: Slide[] = [
   { img: '/images/play-1.webp', title: '자유 탐색', desc: '벽 타기, 활공, 그래플로 솔라리스-3의 지형을 막힘없이 누빈다.' },
   { img: '/images/play-2.webp', title: '액션 전투', desc: '퍼펙트 회피와 반격, 변주·협주 스킬 연계로 이어지는 빠른 전투.' },
   { img: '/images/play-3.webp', title: '잔상 토벌', desc: '필드를 배회하는 강력한 잔상과 맞서고 보상을 획득한다.' },
 ]
 
-export const ECHO = [
+export const ECHO: Slide[] = [
   { img: '/images/echo-1.webp', title: '에코 흡수', desc: '쓰러뜨린 잔상을 흡수해 그 힘을 에코로 손에 넣는다.' },
   { img: '/images/echo-2.webp', title: '에코 스킬', desc: '전투 중 에코로 변신하거나 소환해 강력한 스킬을 발동한다.' },
   { img: '/images/echo-3.webp', title: '하모니 세트', desc: '같은 계열 에코를 모아 장착하면 세트 효과가 발동한다.' },
 ]
 
-export const NOTICES = [
+export const NOTICES: Notice[] = [
   { tag: '공지', title: '정기 점검 안내 (예시)', date: '2026.11.20' },
   { tag: '이벤트', title: '기간 한정 이벤트 오픈 (예시)', date: '2026.11.18' },
   { tag: '업데이트', title: '신규 버전 업데이트 내역 (예시)', date: '2026.11.13' },

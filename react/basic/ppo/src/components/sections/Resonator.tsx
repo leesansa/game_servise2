@@ -1,8 +1,8 @@
 'use client'
 import { useState } from 'react'
-import { RESONATORS } from '../../utils/data.js'
-import { Img } from '../common/Img.jsx'
-import { SectionTitle } from '../common/SectionTitle.jsx'
+import { RESONATORS } from '@/lib/data'
+import { Img } from '@/components/common/Img'
+import { SectionTitle } from '@/components/common/SectionTitle'
 
 export function Resonator() {
   const [i, setI] = useState(0)

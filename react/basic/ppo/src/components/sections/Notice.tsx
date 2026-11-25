@@ -1,6 +1,6 @@
 import Image from 'next/image'
-import { NOTICES } from '../../utils/data.js'
-import { SectionTitle } from '../common/SectionTitle.jsx'
+import { NOTICES } from '@/lib/data'
+import { SectionTitle } from '@/components/common/SectionTitle'
 
 export function Notice() {
   return (

@@ -1,11 +1,12 @@
 'use client'
 import { useState } from 'react'
-import { Img } from './Img.jsx'
+import { Img } from '@/components/common/Img'
+import type { Slide } from '@/types'
 
 // 이미지 + 세로 라벨 + 캡션 + 좌우 화살표. reverse 면 좌우 반전(엔드필드 gameplay/aic 패턴).
-export function Slider({ items, label, reverse }) {
+export function Slider({ items, label, reverse }: { items: Slide[]; label: string; reverse?: boolean }) {
   const [i, setI] = useState(0)
-  const go = (d) => setI((i + d + items.length) % items.length)
+  const go = (d: number) => setI((i + d + items.length) % items.length)
   const item = items[i]
   return (
     <div className={`slider${reverse ? ' is-reverse' : ''}`} data-reveal>

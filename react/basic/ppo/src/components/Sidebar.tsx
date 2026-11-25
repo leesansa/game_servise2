@@ -1,7 +1,7 @@
 'use client'
-import { useActiveSection } from '../hooks/useActiveSection.js'
-import { useReveal } from '../hooks/useReveal.js'
-import { SECTIONS } from '../utils/data.js'
+import { useActiveSection } from '@/hooks/useActiveSection'
+import { useReveal } from '@/hooks/useReveal'
+import { SECTIONS } from '@/lib/data'
 
 export function Sidebar() {
   const active = useActiveSection()

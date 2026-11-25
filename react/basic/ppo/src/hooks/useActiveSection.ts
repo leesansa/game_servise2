@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { SECTIONS } from '../utils/data.js'
+import { SECTIONS } from '@/lib/data'
 
 // 화면 세로 가운데 줄에 걸린 섹션을 활성으로
 export function useActiveSection() {

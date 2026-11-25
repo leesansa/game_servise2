@@ -1,6 +1,6 @@
-import { GAMEPLAY } from '../../utils/data.js'
-import { SectionTitle } from '../common/SectionTitle.jsx'
-import { Slider } from '../common/Slider.jsx'
+import { GAMEPLAY } from '@/lib/data'
+import { SectionTitle } from '@/components/common/SectionTitle'
+import { Slider } from '@/components/common/Slider'
 
 export function Gameplay() {
   return (

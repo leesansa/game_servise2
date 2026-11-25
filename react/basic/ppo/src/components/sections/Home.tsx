@@ -1,7 +1,7 @@
 import Image from 'next/image'
-import { PLATFORMS } from '../../utils/data.js'
-import { Img } from '../common/Img.jsx'
-import { Marquee } from '../common/Marquee.jsx'
+import { PLATFORMS } from '@/lib/data'
+import { Img } from '@/components/common/Img'
+import { Marquee } from '@/components/common/Marquee'
 
 export function Home() {
   return (

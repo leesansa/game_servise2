@@ -1,0 +1,26 @@
+:root {
+  /* 명조 사이트 토큰: 검정 바탕 + 골드 라인 (공식 사이트 계산값 기준) */
+  --c-gold: #c4ac7d;
+  --c-gold-hi: #dab67d;
+  --c-gold-deep: #c9ac67;
+  --c-gold-line: #5f5642;
+  --c-black: #000;
+  --c-bg: #0a0a0b;
+  --c-panel: #141416;
+  --c-panel-hi: #1c1c1f;
+  --c-white: #fff;
+  --c-text: #e1e1e1;
+  --c-sub: #929292;
+  --c-mute: #737373;
+  --c-line: rgba(255, 255, 255, 0.1);
+
+  /* --font-* 은 app/layout.tsx 의 next/font 가 넣어 줌 */
+  --f-en: var(--font-en), var(--font-kr), sans-serif; /* font-stretch 125% 로 와이드 */
+  --f-kr: var(--font-kr), sans-serif;
+  --f-serif: var(--font-serif), var(--font-kr), serif;
+  --f-mono: ui-monospace, Consolas, monospace;
+
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --t: 0.3s var(--ease);
+  --side-w: 64px;
+}

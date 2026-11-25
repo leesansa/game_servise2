@@ -1,12 +1,12 @@
-import { CALENDAR } from '../../utils/data.js'
-import { SectionTitle } from '../common/SectionTitle.jsx'
+import { CALENDAR } from '@/lib/data'
+import { SectionTitle } from '@/components/common/SectionTitle'
 
 export function Calendar() {
   const { cols, rows } = CALENDAR
   return (
     <section id="calendar" className="sec cal">
       <SectionTitle en="CALENDAR" kr="버전 일정" />
-      <div className="cal__board" data-reveal style={{ '--cols': cols.length }}>
+      <div className="cal__board" data-reveal style={{ '--cols': cols.length } as React.CSSProperties}>
         <div className="cal__head">
           {cols.map((c) => (
             <span key={c}>{c}</span>

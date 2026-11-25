@@ -1,0 +1,188 @@
+/* 배치(그리드·섹션 순서·클래스 이름)는 그대로, 겉모습만 명조 사이트 스타일:
+   검정 바탕, 가는 골드 라인, 마름모 장식, 명조체 제목, 느린 원형 회전 */
+
+/* ───────── 공통 ───────── */
+.page {
+  margin-left: var(--side-w);
+  overflow-x: clip;
+}
+
+.sec {
+  position: relative;
+  padding: 120px clamp(24px, 6vw, 96px);
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 0%, rgba(196, 172, 125, 0.07), transparent 70%),
+    var(--sec-bg, var(--c-bg));
+}
+.is-dark {
+  --sec-bg: #050506;
+}
+
+/* 섹션 사이 골드 구분선 + 가운데 마름모 */
+.sec + .sec::before {
+  content: '';
+  position: absolute;
+  inset: 0 10% auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--c-gold-line) 20%, var(--c-gold) 50%, var(--c-gold-line) 80%, transparent);
+}
+.sec + .sec::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  translate: -50% 0;
+  rotate: 45deg;
+  border: 1px solid var(--c-gold);
+  background: var(--c-bg);
+}
+
+/* 모서리 골드 브래킷 (이미지 위에도 보이도록 ::after 오버레이) */
+.cut {
+  position: relative;
+}
+.cut::after {
+  --g: linear-gradient(var(--c-gold), var(--c-gold));
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    var(--g) top left / 12px 1px no-repeat,
+    var(--g) top left / 1px 12px no-repeat,
+    var(--g) top right / 12px 1px no-repeat,
+    var(--g) top right / 1px 12px no-repeat,
+    var(--g) bottom left / 12px 1px no-repeat,
+    var(--g) bottom left / 1px 12px no-repeat,
+    var(--g) bottom right / 12px 1px no-repeat,
+    var(--g) bottom right / 1px 12px no-repeat;
+}
+
+.img {
+  position: relative;
+  overflow: hidden;
+  background: var(--c-panel);
+}
+
+/* 외곽선 거대 텍스트 */
+.outline {
+  font: 800 clamp(80px, 14vw, 220px) / 0.9 var(--f-en);
+  font-stretch: 125%;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(196, 172, 125, 0.18);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* 호버 시 금빛 번짐 */
+.glow {
+  transition: text-shadow 0.6s var(--ease);
+}
+.glow:hover {
+  text-shadow:
+    0 0 18px rgba(218, 182, 125, 0.55),
+    0 0 48px rgba(196, 172, 125, 0.25);
+}
+
+/* 스크롤 등장: 명조 사이트처럼 느리게 떠오름 */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  filter: blur(4px);
+  transition:
+    opacity 0.9s var(--ease),
+    transform 0.9s var(--ease),
+    filter 0.9s var(--ease);
+}
+[data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+}
+
+/* 버튼: 가는 골드 테두리 */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border: 1px solid var(--c-gold-line);
+  background: rgba(0, 0, 0, 0.55);
+  color: var(--c-white);
+  font: 600 12px var(--f-en);
+  font-stretch: 125%;
+  letter-spacing: 0.08em;
+  backdrop-filter: blur(4px);
+  transition:
+    background var(--t),
+    color var(--t),
+    border-color var(--t);
+}
+.btn:hover {
+  border-color: var(--c-gold);
+  background: var(--c-gold);
+  color: var(--c-black);
+}
+
+/* 섹션 제목: 골드 영문 + 명조체 한글 + 마름모 라인 */
+.sec-title {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 48px;
+}
+.sec-title__en {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font: 600 12px var(--f-en);
+  font-stretch: 125%;
+  letter-spacing: 0.3em;
+  color: var(--c-gold);
+}
+.sec-title__en i {
+  width: 6px;
+  height: 6px;
+  rotate: 45deg;
+  border: 1px solid currentColor;
+}
+.sec-title__kr {
+  margin-top: 6px;
+  font: 700 34px/1.3 var(--f-serif);
+  color: var(--c-white);
+}
+.sec-title__bar {
+  display: block;
+  position: relative;
+  width: 72px;
+  height: 1px;
+  margin-top: 18px;
+  background: linear-gradient(90deg, var(--c-gold), transparent);
+}
+.sec-title__bar::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -3px;
+  width: 7px;
+  height: 7px;
+  rotate: 45deg;
+  background: var(--c-gold);
+}
+

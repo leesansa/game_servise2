@@ -1,5 +1,5 @@
-import { INFO } from '../../utils/data.js'
-import { SectionTitle } from '../common/SectionTitle.jsx'
+import { INFO } from '@/lib/data'
+import { SectionTitle } from '@/components/common/SectionTitle'
 
 export function Information() {
   return (

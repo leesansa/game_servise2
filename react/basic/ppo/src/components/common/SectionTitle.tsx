@@ -1,5 +1,5 @@
 
-export function SectionTitle({ en, kr, dark }) {
+export function SectionTitle({ en, kr, dark }: { en: string; kr: string; dark?: boolean }) {
   return (
     <div className={`sec-title${dark ? ' is-dark' : ''}`} data-reveal>
       <p className="sec-title__en">
