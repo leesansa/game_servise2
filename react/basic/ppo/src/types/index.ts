@@ -17,9 +17,12 @@ export type Region = { en: string; img: string; name: string; desc: string }
 
 export type Info = { k: string; label: string; v: string }
 
-// start/end : 타임라인 열 번호(0부터)
-export type CalendarRow = { tag: string; title: string; start: number; end: number }
-export type Calendar = { cols: string[]; rows: CalendarRow[] }
+// 날짜는 'YYYY-MM-DD' (한국 시간 기준 날짜). 하루짜리 일정은 start === end
+// img : 있으면 배너(이미지 깔린 큰 막대)로 그림, pos : 이미지에서 보여 줄 위치 (기본 'center top')
+export type CalendarEvent = { title: string; start: string; end: string; img?: string; pos?: string }
+// 가로 한 줄 = 같은 종류 일정 (업데이트, 픽업 …)
+export type CalendarLane = { label: string; items: CalendarEvent[] }
+export type Calendar = { from: string; to: string; lanes: CalendarLane[] }
 
 // Slider 한 장 (GAMEPLAY, ECHO)
 export type Slide = { img: string; title: string; desc: string }

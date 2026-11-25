@@ -1,5 +1,5 @@
 // 페이지 데이터. 이미지는 public/images/ (명조 공식 사이트 에셋, 포트폴리오 전용).
-// shortcut: 공지·일정은 정적 샘플, 서버 API가 생기면 schema.sql 의 news 테이블로 교체.
+// shortcut: 공지는 정적 샘플, 일정은 subgamecals.com 기준 수동 입력, 서버 API가 생기면 schema.sql 의 news 테이블로 교체.
 import type { Calendar, Info, Notice, Region, Resonator, Section, Slide } from '@/types'
 
 export const SECTIONS: Section[] = [
@@ -100,15 +100,61 @@ export const INFO: Info[] = [
   { k: 'LAUNCH', label: '출시', v: '2024.05' },
 ]
 
-// 예시 일정: start/end 는 타임라인 열 번호(0부터), 실제 날짜 아님
+// 3.6 프리뷰 방송 ~ 3.8 종료 (21주). 출처: subgamecals.com 명조 일정·배너
+// 픽업 배너: 네이버 라운지 공식 「캐릭터 이벤트 튜닝」 공지 (12/03 은 공지 전이라 3.5 양양·현령 튜닝 배너)
+// 이어지는 일정은 교체일이 겹쳐도 됨: 막대는 end 전날까지 그려짐
 export const CALENDAR: Calendar = {
-  cols: ['W1', 'W2', 'W3', 'W4', 'W5', 'W6'],
-  rows: [
-    { tag: '공명자', title: '이벤트 획득 1부', start: 0, end: 3 },
-    { tag: '공명자', title: '이벤트 획득 2부', start: 3, end: 6 },
-    { tag: '무기', title: '이벤트 무기 획득', start: 0, end: 6 },
-    { tag: '이벤트', title: '기간 한정 탐색 이벤트', start: 1, end: 4 },
-    { tag: '이벤트', title: '전투 챌린지', start: 4, end: 6 },
+  from: '2026-08-03',
+  to: '2026-12-27',
+  lanes: [
+    {
+      label: '업데이트',
+      items: [
+        { title: '3.6 『신기루 속 등불 그림자, 속세에 깃든 검의 결심』', start: '2026-08-20', end: '2026-09-30', img: '/images/ver-3.6.webp' },
+        { title: '3.7 『거울에 잠긴 허상, 마음이 비추는 인간 세상』', start: '2026-09-30', end: '2026-11-12', img: '/images/ver-3.7.webp' },
+        { title: '3.8 『아득한 꿈속, 잔잔히 스러진 백합』', start: '2026-11-12', end: '2026-12-24', img: '/images/ver-3.8.webp' },
+      ],
+    },
+    {
+      label: '픽업',
+      items: [
+        { title: '청초 · 데니아', start: '2026-08-20', end: '2026-09-10', img: '/images/tuning-0820.webp', pos: '55% 30%' },
+        { title: '경연 · 히유키 · 모니에', start: '2026-09-10', end: '2026-09-29', img: '/images/tuning-0910.webp', pos: '58% 30%' },
+        { title: '여우의 별자리 · 유노 · 치사', start: '2026-09-30', end: '2026-10-22', img: '/images/tuning-0930.webp', pos: '72% 25%' },
+        { title: '쇄명 · 린네 · 루실라', start: '2026-10-22', end: '2026-11-11', img: '/images/tuning-1022.webp', pos: '55% 30%' },
+        { title: '릴리 · 시그리카 · 구원', start: '2026-11-12', end: '2026-12-03', img: '/images/tuning-1112.webp', pos: '63% 55%' },
+        { title: '양양·현령 · 수수 · 히유키', start: '2026-12-03', end: '2026-12-23', img: '/images/tuning-1203.webp', pos: '62% 35%' },
+      ],
+    },
+    {
+      // 3.8 버전 게임 내 이벤트. 출처: 네이버 라운지 공식 공지 (기간: 업데이트 내용 안내, 이미지: 개별 이벤트 공지 · 「버전 업데이트 소개」 이미지에서 잘라 씀)
+      label: '이벤트',
+      items: [
+        { title: '세컨드 솔라리스: 이름 없는 꿈', start: '2026-11-12', end: '2026-12-21', img: '/images/event-1112-second-solaris.webp' },
+        { title: '옛 꿈의 선물 · 7일 출석', start: '2026-11-12', end: '2026-12-21', img: '/images/event-1112-oldgift.webp' },
+        { title: '라하이 로이 퍼즐 · 역전', start: '2026-11-19', end: '2026-12-03', img: '/images/event-1119-puzzle.webp' },
+        { title: '울림의 영역 2배', start: '2026-11-26', end: '2026-12-03', img: '/images/event-1126-double.webp' },
+        { title: '무무 기획 · 정비', start: '2026-12-03', end: '2026-12-17', img: '/images/event-1203-mumu.webp', pos: '20% 50%' },
+        { title: '꿈의 들판, 기이함을 찾아서', start: '2026-12-03', end: '2026-12-21', img: '/images/event-1203-dream.webp', pos: 'center' },
+        { title: '바람이 향하는 곳 · 출석', start: '2026-12-07', end: '2026-12-21', img: '/images/event-1207-wind.webp', pos: '45% 20%' },
+      ],
+    },
+    {
+      label: '특별 방송',
+      items: [
+        { title: '3.6 프리뷰 특별 방송', start: '2026-08-07', end: '2026-08-07' },
+        { title: '3.7 프리뷰 특별 방송', start: '2026-09-19', end: '2026-09-19' },
+        { title: '3.8 프리뷰 특별 방송', start: '2026-11-06', end: '2026-11-06' },
+      ],
+    },
+    {
+      label: '콜라보·행사',
+      items: [
+        { title: '명조 X 도미노피자', start: '2026-08-21', end: '2026-09-17', img: '/images/collab-0821.webp' },
+        { title: '월드 투어 「To the New World」', start: '2026-08-29', end: '2026-08-29' },
+        { title: '명조 X 롯데시네마', start: '2026-10-19', end: '2026-11-01', img: '/images/collab-1019.webp' },
+      ],
+    },
   ],
 }
 
