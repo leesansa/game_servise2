@@ -3,7 +3,7 @@ import { Archivo, Noto_Sans_KR, Noto_Serif_KR } from 'next/font/google'
 // 순서 중요: 토큰 → 리셋 → 기본값 → 공통 → 영역별 → 모바일(마지막에 덮어씀)
 import '@/styles/variables.css'
 import '@/styles/reset.css'
-import './globals.css'
+import '@/styles/globals.css'
 import '@/styles/common.css'
 import '@/styles/loader.css'
 import '@/styles/sidebar.css'
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   icons: { icon: '/favicon.svg' },
 }
 
-export default function RootLayout({ children }: LayoutProps<'/'>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko" className={`${archivo.variable} ${noto.variable} ${serif.variable}`}>
       <body>{children}</body>

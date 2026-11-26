@@ -407,15 +407,14 @@
   letter-spacing: 0.3em;
   color: var(--c-gold);
 }
-.lore__nav,
-.slider__nav {
+/* 이전 · 다음 버튼 (PagerNav). --label: 가운데에 큰 제목 (세계관 · 에코) */
+.pager {
   display: flex;
   align-items: center;
   gap: 14px;
   margin: 24px 0 16px;
 }
-.lore__nav button,
-.slider__nav button {
+.pager button {
   /* 화살표(SVG)를 원 정중앙에 */
   display: grid;
   place-items: center;
@@ -436,13 +435,12 @@
   width: 14px;
   height: 14px;
 }
-.lore__nav button:hover,
-.slider__nav button:hover {
+.pager button:hover {
   border-color: var(--c-gold);
   background: var(--c-gold);
   color: var(--c-black);
 }
-.lore__nav span {
+.pager--label span {
   flex: 1;
   padding: 6px 12px;
   border-bottom: 1px solid var(--c-gold-line);
@@ -450,7 +448,7 @@
   color: var(--c-white);
 }
 /* 지역 번호: 공용 sup(10px)보다 키우고 이름과 간격 */
-.lore__nav sup {
+.pager--label sup {
   margin-right: 10px;
   font-size: 13px;
   letter-spacing: 0.1em;

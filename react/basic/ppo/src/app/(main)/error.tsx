@@ -3,13 +3,11 @@
 export default function Error({ reset }: { error: Error; reset: () => void }) {
   return (
     <main className="page">
-      <section className="sec is-dark" style={{ display: 'grid', placeItems: 'center', minHeight: '100vh', textAlign: 'center' }}>
-        <div>
-          <p>데이터를 불러오지 못했습니다.</p>
-          <button type="button" className="btn cut" onClick={reset}>
-            다시 시도
-          </button>
-        </div>
+      <section className="sec is-dark error">
+        <p>데이터를 불러오지 못했습니다.</p>
+        <button type="button" className="btn cut" onClick={reset}>
+          다시 시도
+        </button>
       </section>
     </main>
   )

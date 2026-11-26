@@ -2,7 +2,7 @@
 import { Loader } from '@/components/Loader'
 import { Sidebar } from '@/components/Sidebar'
 
-const MainLayout = ({ children }: LayoutProps<'/'>) => {
+const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <Loader />

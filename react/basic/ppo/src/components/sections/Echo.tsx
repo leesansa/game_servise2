@@ -21,7 +21,7 @@ export function Echo({ terms }: { terms: Term[] }) {
             <h3 className="echo__name">{t.name}</h3>
             <p className="echo__desc">{t.desc}</p>
           </div>
-          <PagerNav className="lore__nav" go={go}>
+          <PagerNav go={go} label>
             <span>
               <sup>{pad(i + 1)}</sup> / {pad(n)}
             </span>

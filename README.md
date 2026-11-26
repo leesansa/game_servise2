@@ -100,13 +100,13 @@ react/basic/ppo/
 ├─ db/                  schema.sql(테이블), seed.sql(초기 데이터), setup.mjs(DB 초기화)
 ├─ public/images/       공명자, 일정 배너, 세계관 이미지
 └─ src/
-   ├─ app/              레이아웃, 첫 페이지, 전역 CSS
+   ├─ app/              레이아웃, 첫 페이지, error.tsx(DB 오류 안내)
    ├─ components/
    │  ├─ sections/      홈, 공명자, 세계관, 일정, 콘텐츠, 에코, 공지, 게임 정보
-   │  └─ common/        슬라이더, 이미지, 섹션 제목 등 공통 부품
-   ├─ hooks/            useActiveSection(현재 섹션), useReveal(등장 효과)
-   ├─ lib/              data.ts(섹션 목록), db/(DB 연결, 조회)
-   ├─ styles/           변수, 사이드바, 섹션, 반응형 CSS
+   │  └─ common/        슬라이더, 이전·다음 버튼, 이미지, 섹션 제목 등 공통 부품
+   ├─ hooks/            useActiveSection(현재 섹션), useReveal(등장 효과), useCycle(넘기기)
+   ├─ lib/              data.ts(섹션 목록), format.ts, db/(DB 연결, 조회)
+   ├─ styles/           전역, 변수, 사이드바, 섹션, 반응형 CSS
    └─ types/            공용 타입
 ```
 

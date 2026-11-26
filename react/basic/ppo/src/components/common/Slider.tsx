@@ -18,7 +18,7 @@ export function Slider({ items, label, reverse }: { items: Slide[]; label: strin
         </p>
       </div>
       <div className="slider__foot">
-        <PagerNav className="slider__nav" go={go}>
+        <PagerNav go={go}>
           <span className="slider__count">
             {pad(i + 1)} / {pad(items.length)}
           </span>

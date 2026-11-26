@@ -3,6 +3,7 @@ import { useSyncExternalStore } from 'react'
 import type { Calendar as CalendarData } from '@/types'
 import { Img } from '@/components/common/Img'
 import { SectionTitle } from '@/components/common/SectionTitle'
+import { pad } from '@/lib/format'
 
 const DAY = 864e5
 const md = (date: string) => date.slice(5).replace('-', '.')
@@ -10,7 +11,7 @@ const md = (date: string) => date.slice(5).replace('-', '.')
 // 오늘 날짜(브라우저 기준 'YYYY-MM-DD')는 브라우저에서만 계산 (서버 렌더 시점 날짜가 박히지 않게)
 const todayYmd = () => {
   const d = new Date()
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`
 }
 const noop = () => () => {}
 
@@ -38,7 +39,7 @@ export function Calendar({ calendar }: { calendar: CalendarData }) {
           <div className="cal__track">
             {WEEKS.map((d, w) => (
               <span key={w} className="cal__week" style={{ gridColumn: `${w * 7 + 1} / span 7` }}>
-                {d.getUTCMonth() + 1}.{String(d.getUTCDate()).padStart(2, '0')}
+                {d.getUTCMonth() + 1}.{pad(d.getUTCDate())}
               </span>
             ))}
             {inRange && <i className="cal__today-tag">TODAY</i>}

@@ -1,4 +1,4 @@
-// 화면에 쓰는 데이터 모양. 데이터(lib/data.ts)와 컴포넌트가 같은 타입을 공유.
+// 화면에 쓰는 데이터 모양. DB 조회(lib/db/queries.ts)와 컴포넌트가 같은 타입을 공유.
 
 // 사이드바 메뉴 = 섹션 하나
 export type Section = { id: string; en: string; kr: string }
@@ -28,7 +28,7 @@ export type CalendarEvent = { title: string; start: string; end: string; img?: s
 export type CalendarLane = { label: string; items: CalendarEvent[] }
 export type Calendar = { from: string; to: string; lanes: CalendarLane[] }
 
-// Slider 한 장 (GAMEPLAY, ECHO)
+// Slider 한 장 (GAMEPLAY)
 export type Slide = { img: string; title: string; desc: string }
 
 // 세계관 용어 카드 (공식 사이트 「정보」)

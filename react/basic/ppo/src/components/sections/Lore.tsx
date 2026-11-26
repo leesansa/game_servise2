@@ -22,7 +22,7 @@ export function Lore({ regions }: { regions: Region[] }) {
         <div className="lore__info" key={`${r.en}-i`}>
           <p className="lore__en glow">{r.en}</p>
           <p className="lore__sub">WUTHERING WAVES</p>
-          <PagerNav className="lore__nav" go={go} what="지역">
+          <PagerNav go={go} label what="지역">
             <span>
               <sup>{pad(i + 1)}</sup> {r.name}
             </span>

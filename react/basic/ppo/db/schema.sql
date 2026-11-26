@@ -27,7 +27,6 @@ create table resonators (
   sort        integer not null,    -- 진영 안 순서
   unique (faction_id, sort)
 );
-create index resonators_faction_idx on resonators (faction_id, sort);
 
 -- 버전 일정 (업데이트 · 픽업 · 이벤트 …). 하루짜리는 start_date = end_date
 create table calendar_events (
@@ -40,7 +39,6 @@ create table calendar_events (
   img_pos    text,                 -- 이미지에서 보여 줄 위치 (CSS object-position), 없으면 기본값
   sort       integer not null      -- 같은 줄 안 순서
 );
-create index calendar_events_lane_idx on calendar_events (lane, sort);
 
 -- 에코 시스템 카드 (공식 「정보」 세계관 용어)
 create table echo_terms (
@@ -86,4 +84,3 @@ create table notices (
   title        text not null,
   published_on date not null
 );
-create index notices_published_idx on notices (published_on desc);
