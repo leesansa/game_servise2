@@ -22,7 +22,7 @@ export default defineConfig({
       // Neon DB 연결. id 는 `npx wrangler hyperdrive create` 가 알려 주는 값 (비밀번호 아님, 커밋해도 됨)
       // 로컬 개발은 Hyperdrive 를 거치지 않고 .env 의 DATABASE_URL 로 Neon 에 바로 연결
       HYPERDRIVE: bindings.hyperdrive({
-        id: "REPLACE_WITH_HYPERDRIVE_ID",
+        id: "db271f1542aa4782a559504cd08a392d",
         dev: { connectionString: process.env.DATABASE_URL },
       }),
     },

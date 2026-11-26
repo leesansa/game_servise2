@@ -60,7 +60,10 @@ export function getPageData(): Promise<PageData> {
         ...f,
         roles: resonators
           .filter((r) => r.faction_id === f.id)
-          .map(({ faction_id: _, ...r }) => ({ ...r, rarity: Number(r.rarity) })),
+          .map((r) => ({
+            en: r.en, name: r.name, attr: r.attr, rarity: Number(r.rarity),
+            desc: r.desc, img: r.img, thumb: r.thumb,
+          })),
       })),
       calendar: {
         ...calendarRange(events),
