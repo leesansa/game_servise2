@@ -5,6 +5,8 @@
 <h3 align="center">명조: 워더링 웨이브의 공명자, 세계관, 버전 일정을 한 페이지에 모아 보여 주는 팬 사이트</h3>
 
 <p align="center">
+  <a href="https://wuwa-portfolio.fridgeo.workers.dev">사이트 바로가기 (wuwa-portfolio.fridgeo.workers.dev)</a>
+  <br>
   2026.10.08 ~ 11.25, 개인 프로젝트
 </p>
 
