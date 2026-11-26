@@ -42,6 +42,7 @@ npm run deploy     # 수동 배포. 평소엔 main push 로 자동 배포
 - 여러 섹션이 같이 쓰는 모양은 공용 클래스로(`.pager`, `.cut`, `.img`, `.sec`). 다른 섹션의 클래스를 빌려 쓰지 않는다.
 - 색 · 글꼴 · 이징은 `variables.css` 토큰만 쓴다 (골드 `--c-gold`, 배경 `--c-bg` 등). 인라인 스타일은 계산값(`--col`, `transitionDelay`)에만.
 - 모바일은 `responsive.css` 의 `@media (max-width: 768px)` 한 곳에 모은다.
+- 이전/다음 버튼(`.pager`)이 있는 칼럼은 세로 가운데 정렬하지 않는다. 항목마다 내용 길이가 달라 버튼이 움직인다. 위쪽 정렬 + 줄 수가 바뀌는 제목은 높이 고정.
 
 ## DB (Neon PostgreSQL)
 
