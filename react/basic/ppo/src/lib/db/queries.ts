@@ -1,5 +1,5 @@
 // 페이지에 필요한 데이터를 DB 에서 한 번에 읽음. 화면 컴포넌트가 쓰던 모양(@/types) 그대로 돌려줌.
-import type { Calendar, Faction, Info, Notice, Region, Resonator, Slide, Term } from '@/types'
+import type { Calendar, Faction, Info, Notice, Place, Region, Resonator, Slide, Term } from '@/types'
 import { withDb } from './client'
 
 // 일정 줄 순서 (DB 의 lane 값과 같아야 함, schema.sql 의 check 제약 참고)
@@ -35,7 +35,7 @@ export function calendarRange(events: { start: string; end: string }[]) {
 export function getPageData(): Promise<PageData> {
   return withDb(async (sql) => {
     // 서로 상관없는 조회라 동시에 보냄. "desc", "end" 는 SQL 예약어라 따옴표로 감쌈
-    const [factions, resonators, events, echo, regions, info, gameplay, notices] = await Promise.all([
+    const [factions, resonators, events, echo, regions, places, info, gameplay, notices] = await Promise.all([
       sql<{ id: string; en: string; name: string; icon: string }[]>`
         select id, en, name, coalesce(icon, '') as icon from factions order by sort`,
       sql<(Resonator & { faction_id: string })[]>`
@@ -46,7 +46,9 @@ export function getPageData(): Promise<PageData> {
                img, img_pos as pos
         from calendar_events order by sort`,
       sql<Term[]>`select en, name, img, description as "desc" from echo_terms order by sort`,
-      sql<Region[]>`select en, name, img, description as "desc" from regions order by sort`,
+      sql<(Omit<Region, 'places'> & { id: string })[]>`select id, en, name, img, description as "desc" from regions order by sort`,
+      sql<(Place & { region_id: string })[]>`
+        select region_id, en, name, description as "desc" from region_places order by region_id, sort`,
       sql<Info[]>`select k, label, value as v from game_info order by sort`,
       sql<Slide[]>`select title, description as "desc", img from gameplay_slides order by sort`,
       sql<Notice[]>`select tag, title, to_char(published_on, 'YYYY.MM.DD') as date from notices order by published_on desc, id`,
@@ -75,7 +77,10 @@ export function getPageData(): Promise<PageData> {
         })).filter((l) => l.items.length),
       },
       echo: plain(echo),
-      regions: plain(regions),
+      regions: regions.map(({ id, ...r }) => ({
+        ...r,
+        places: places.filter((p) => p.region_id === id).map((p) => ({ en: p.en, name: p.name, desc: p.desc })),
+      })),
       info: plain(info),
       gameplay: plain(gameplay),
       notices: plain(notices),

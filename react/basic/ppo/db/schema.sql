@@ -2,7 +2,7 @@
 -- 실행 순서: schema.sql → seed.sql   (다시 실행하면 테이블을 지우고 새로 만듦)
 -- 화면 구조용 설정(사이드바 섹션 목록, 플랫폼 이름)은 DB 가 아니라 코드(src/lib/data.ts)에 둠.
 
-drop table if exists resonators, factions, calendar_events, echo_terms, regions, game_info, gameplay_slides, notices cascade;
+drop table if exists resonators, factions, calendar_events, echo_terms, region_places, regions, game_info, gameplay_slides, notices cascade;
 
 -- 공명자 진영: 공식 사이트 분류 (황룡, 검은 해안 …)
 create table factions (
@@ -50,14 +50,25 @@ create table echo_terms (
   sort        integer not null unique
 );
 
--- 세계관 지역
+-- 세계관 지역 (공식 사이트 「월드」 기준: 황룡, 검은 해안, 리나시타, 라하이 로이)
 create table regions (
-  id          integer generated always as identity primary key,
+  id          text primary key,    -- 영문 슬러그 (예: huanglong)
   en          text not null,
   name        text not null,
   img         text not null,
   description text not null,
   sort        integer not null unique
+);
+
+-- 지역 안의 세부 장소 (예: 황룡 → 금주성, 현방성 …)
+create table region_places (
+  id          integer generated always as identity primary key,
+  region_id   text not null references regions (id) on delete cascade,
+  en          text not null,       -- 공식 영문판 이름
+  name        text not null,
+  description text not null,
+  sort        integer not null,    -- 지역 안 순서
+  unique (region_id, sort)
 );
 
 -- 게임 정보 카드 (장르, 플랫폼 …)

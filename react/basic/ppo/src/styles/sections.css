@@ -462,6 +462,60 @@ sup {
   color: var(--c-sub);
   font-size: 14px;
 }
+/* 세부 장소: 이름 칩 + 선택한 장소 설명 */
+.lore__places {
+  margin-top: 28px;
+}
+.lore__places-title {
+  margin-bottom: 12px;
+  font: 700 13px var(--f-kr);
+  letter-spacing: 0.1em;
+  color: var(--c-gold);
+}
+.lore__places-title small {
+  margin-left: 6px;
+  font: 500 11px var(--f-en);
+  color: var(--c-mute);
+}
+.lore__places ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.lore__places button {
+  padding: 5px 12px;
+  border: 1px solid var(--c-gold-line);
+  font-size: 12px;
+  color: var(--c-sub);
+  transition:
+    background var(--t),
+    color var(--t),
+    border-color var(--t);
+}
+.lore__places button:hover {
+  border-color: var(--c-gold);
+  color: var(--c-white);
+}
+.lore__places button.is-on {
+  border-color: var(--c-gold);
+  background: var(--c-gold);
+  color: var(--c-black);
+}
+.lore__place {
+  margin-top: 16px;
+  padding-left: 14px;
+  border-left: 2px solid var(--c-gold);
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--c-sub);
+  animation: slide-in 0.5s var(--ease);
+}
+.lore__place-en {
+  margin-bottom: 4px;
+  font: 500 11px var(--f-en);
+  letter-spacing: 0.15em;
+  color: var(--c-gold);
+}
 
 /* ───────── INFORMATION ───────── */
 .info__grid {
@@ -890,6 +944,17 @@ sup {
 .echo__desc {
   color: var(--c-sub);
   line-height: 1.8;
+}
+/* 현재 번호는 크게, 전체 수는 작게. 둘 다 금색 */
+.pager--label .echo__count {
+  font: 500 14px var(--f-en);
+  letter-spacing: 0.1em;
+  color: var(--c-gold);
+}
+.echo__count b {
+  margin-right: 4px;
+  font-size: 26px;
+  font-weight: 700;
 }
 .echo__cards {
   display: flex;

@@ -22,8 +22,8 @@ export function Echo({ terms }: { terms: Term[] }) {
             <p className="echo__desc">{t.desc}</p>
           </div>
           <PagerNav go={go} label>
-            <span>
-              <sup>{pad(i + 1)}</sup> / {pad(n)}
+            <span className="echo__count">
+              <b>{pad(i + 1)}</b> / {pad(n)}
             </span>
           </PagerNav>
         </div>

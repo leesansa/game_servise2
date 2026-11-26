@@ -17,7 +17,9 @@ export type Resonator = {
 // 공명자 진영 (공식 분류: 황룡, 검은 해안, 라군나 …)
 export type Faction = { id: string; en: string; name: string; icon: string; roles: Resonator[] }
 
-export type Region = { en: string; img: string; name: string; desc: string }
+// 세계관 지역과 그 안의 세부 장소 (공식 사이트 「월드」)
+export type Place = { en: string; name: string; desc: string }
+export type Region = { en: string; img: string; name: string; desc: string; places: Place[] }
 
 export type Info = { k: string; label: string; v: string }
 
