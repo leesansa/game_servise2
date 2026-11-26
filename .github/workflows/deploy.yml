@@ -34,7 +34,9 @@ jobs:
       - run: npm ci
       - run: npm run lint
       # deploy 가 빌드까지 하므로 따로 build 하지 않음
-      - run: npm run deploy
+      # CI 에선 커밋 메시지 전체가 Worker 버전 메모로 붙는데 Cloudflare 길이 제한(100자)을 넘으므로 빼고,
+      # 커밋 SHA 태그만 남김
+      - run: npm run deploy -- --message "" --verbose
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
