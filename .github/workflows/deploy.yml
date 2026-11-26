@@ -31,6 +31,15 @@ jobs:
           node-version: 24
           cache: npm
           cache-dependency-path: react/basic/ppo/package-lock.json
+      # 시크릿이 없으면 GitHub 는 빈 값을 넘기므로, 배포까지 가기 전에 어느 것이 비었는지 알려 주고 멈춤 (값은 출력 안 함)
+      - name: Check secrets
+        run: |
+          [ -n "$CLOUDFLARE_API_TOKEN" ] || { echo "::error::CLOUDFLARE_API_TOKEN 시크릿이 비어 있음 (Settings > Secrets and variables > Actions > Repository secrets)"; exit 1; }
+          [ -n "$CLOUDFLARE_ACCOUNT_ID" ] || { echo "::error::CLOUDFLARE_ACCOUNT_ID 시크릿이 비어 있음"; exit 1; }
+          echo "secrets ok"
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       - run: npm ci
       - run: npm run lint
       # deploy 가 빌드까지 하므로 따로 build 하지 않음
