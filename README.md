@@ -7,7 +7,7 @@
 <p align="center">
   <a href="https://wuwa-portfolio.fridgeo.workers.dev">사이트 바로가기 (wuwa-portfolio.fridgeo.workers.dev)</a>
   <br>
-  2026.10.08 ~ 11.26, 개인 프로젝트
+  2026.11.06 ~ 11.26 개인 프로젝트
 </p>
 
 ---
