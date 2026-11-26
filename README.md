@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="react/basic/ppo/public/images/logo-kr.png" alt="명조: 워더링 웨이브 로고" width="260">
+  <img src="public/images/logo-kr.png" alt="명조: 워더링 웨이브 로고" width="260">
 </p>
 
 <h3 align="center">명조: 워더링 웨이브의 공명자, 세계관, 버전 일정을 한 페이지에 모아 보여 주는 팬 사이트</h3>
@@ -109,8 +109,7 @@ AI 도구는 구조를 설계하고 코드를 작성하고 리뷰할 때, 공식
 ## 폴더 구조
 
 ```
-.github/workflows/      deploy.yml (main push → 자동 배포)
-react/basic/ppo/
+├─ .github/workflows/  deploy.yml (main push → 자동 배포)
 ├─ db/                  schema.sql(테이블), seed.sql(초기 데이터), setup.mjs(DB 초기화)
 ├─ public/images/       공명자, 일정 배너, 세계관, 콘텐츠 소개 이미지
 └─ src/
@@ -129,7 +128,6 @@ react/basic/ppo/
 ## 실행 방법
 
 ```bash
-cd react/basic/ppo
 npm install
 
 # .env 에 Neon 연결 문자열 넣기

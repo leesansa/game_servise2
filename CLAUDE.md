@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-명조: 워더링 웨이브 팬 포트폴리오 한 페이지 사이트. 실제 프로젝트는 `react/basic/ppo/` 하나뿐이고, 저장소 최상단에는 README · 이 파일 · `.github/workflows/deploy.yml` 만 둔다.
+명조: 워더링 웨이브 팬 포트폴리오 한 페이지 사이트. 저장소 최상단이 곧 프로젝트 폴더다(예전 `react/basic/ppo/` 에서 옮김). 하위 폴더를 새로 감싸지 않는다.
 
 ## 소통
 
@@ -8,7 +8,7 @@
 - 사용자는 결과 위주로 짧게 요청한다 ("진행해줘", "커밋 푸쉬"). 요청 범위 안에서는 묻지 말고 끝까지 하고, 하지 않은 것과 확인 못 한 것만 짧게 보고한다.
 - 되돌리기 어려운 일(DB 초기화, 실제 배포, 파일 대량 삭제)은 한 번 확인받고 한다.
 
-## 명령 (`react/basic/ppo` 에서)
+## 명령 (저장소 최상단에서)
 
 ```bash
 npm run dev        # vite dev, 포트 3000 (쓰고 있으면 3001…로 바뀌니 로그에서 Local 주소 확인)
@@ -74,7 +74,7 @@ npm run deploy     # 수동 배포. 평소엔 main push 로 자동 배포
 - 작업 브랜치는 `main`, 원격은 `origin` = `leesansa/game_servise2`.
 - 커밋 메시지: `ppo: …`(사이트 코드), `docs: …`(문서), `ci: …`(워크플로), `chore: …`(정리). 첫 줄 요약 + 필요하면 `-` 목록.
 - 커밋 전에 `git status` 로 의도한 파일만 들어가는지 본다. `.env` 는 절대 커밋하지 않는다.
-- main 에 push 하고 `react/basic/ppo/**` 가 바뀌었으면 GitHub Actions 가 lint → 배포한다. push 뒤에는 실행 결과와 실제 사이트(https://wuwa-portfolio.fridgeo.workers.dev)를 확인한다.
+- main 에 push 하면(`.md` 만 바뀐 경우 제외) GitHub Actions 가 lint → 배포한다. push 뒤에는 실행 결과와 실제 사이트(https://wuwa-portfolio.fridgeo.workers.dev)를 확인한다.
   - 실행 상태는 로그인 없이 `https://api.github.com/repos/leesansa/game_servise2/actions/runs` 로 볼 수 있다. 자세한 로그는 로그인이 필요하니 사용자에게 받는다.
   - 시크릿: `CLOUDFLARE_API_TOKEN`(Workers 편집 + Hyperdrive 편집, API Tokens 에서 만든 토큰. Global API Key 아님), `CLOUDFLARE_ACCOUNT_ID`.
 
@@ -83,4 +83,4 @@ npm run deploy     # 수동 배포. 평소엔 main push 로 자동 배포
 - `python` 은 스토어 바로가기라 실행되지 않는다. 스크립트는 node 로.
 - 백슬래시가 들어간 정규식 · 긴 스크립트는 bash heredoc 대신 파일로 써서 `node 파일.mjs` 로 실행한다(heredoc 에서 백슬래시가 깨진 적 있음).
 - `cat > 파일` 처럼 입력을 기다리는 명령을 heredoc 없이 쓰지 않는다(멈춤).
-- 사용자가 `!` 로 직접 실행하는 명령은 이미 `react/basic/ppo` 에서 실행되니 `cd` 를 붙이지 않는다.
+- 사용자가 `!` 로 직접 실행하는 명령은 저장소 최상단에서 실행된다.
