@@ -1,14 +1,14 @@
 'use client'
-import { useState } from 'react'
 import type { Region } from '@/types'
 import { Img } from '@/components/common/Img'
-import { Chevron } from '@/components/common/Chevron'
+import { PagerNav } from '@/components/common/PagerNav'
 import { SectionTitle } from '@/components/common/SectionTitle'
+import { useCycle } from '@/hooks/useCycle'
+import { pad } from '@/lib/format'
 
 export function Lore({ regions }: { regions: Region[] }) {
-  const [i, setI] = useState(0)
+  const [i, go] = useCycle(regions.length)
   const r = regions[i]
-  const go = (d: number) => setI((i + d + regions.length) % regions.length)
   return (
     <section id="lore" className="sec lore is-dark">
       <SectionTitle en="LORE" kr="세계관 소개" dark />
@@ -22,17 +22,11 @@ export function Lore({ regions }: { regions: Region[] }) {
         <div className="lore__info" key={`${r.en}-i`}>
           <p className="lore__en glow">{r.en}</p>
           <p className="lore__sub">WUTHERING WAVES</p>
-          <div className="lore__nav">
-            <button type="button" onClick={() => go(-1)} aria-label="이전 지역">
-              <Chevron dir="left" />
-            </button>
+          <PagerNav className="lore__nav" go={go} what="지역">
             <span>
-              <sup>{String(i + 1).padStart(2, '0')}</sup> {r.name}
+              <sup>{pad(i + 1)}</sup> {r.name}
             </span>
-            <button type="button" onClick={() => go(1)} aria-label="다음 지역">
-              <Chevron dir="right" />
-            </button>
-          </div>
+          </PagerNav>
           <p className="lore__desc">{r.desc}</p>
         </div>
       </div>

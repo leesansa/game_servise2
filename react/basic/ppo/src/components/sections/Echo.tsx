@@ -1,17 +1,15 @@
 'use client'
-import { useState } from 'react'
 import type { Term } from '@/types'
 import { Img } from '@/components/common/Img'
-import { Chevron } from '@/components/common/Chevron'
+import { PagerNav } from '@/components/common/PagerNav'
 import { SectionTitle } from '@/components/common/SectionTitle'
-
-const pad = (n: number) => String(n).padStart(2, '0')
+import { useCycle } from '@/hooks/useCycle'
+import { pad } from '@/lib/format'
 
 // 공식 사이트 「정보」 카드 넘기기 패턴: 왼쪽 설명, 오른쪽 카드 줄. 현재 카드가 맨 앞에 넓게 오고 나머지가 뒤를 이음.
 export function Echo({ terms }: { terms: Term[] }) {
-  const [i, setI] = useState(0)
   const n = terms.length
-  const go = (d: number) => setI((i + d + n) % n) // 끝에서 처음으로 이어짐
+  const [i, go, setI] = useCycle(n)
   const t = terms[i]
   return (
     <section id="echo" className="sec echo">
@@ -23,17 +21,11 @@ export function Echo({ terms }: { terms: Term[] }) {
             <h3 className="echo__name">{t.name}</h3>
             <p className="echo__desc">{t.desc}</p>
           </div>
-          <div className="lore__nav">
-            <button type="button" onClick={() => go(-1)} aria-label="이전">
-              <Chevron dir="left" />
-            </button>
+          <PagerNav className="lore__nav" go={go}>
             <span>
               <sup>{pad(i + 1)}</sup> / {pad(n)}
             </span>
-            <button type="button" onClick={() => go(1)} aria-label="다음">
-              <Chevron dir="right" />
-            </button>
-          </div>
+          </PagerNav>
         </div>
         <ul className="echo__cards">
           {terms.map((c, k) => (

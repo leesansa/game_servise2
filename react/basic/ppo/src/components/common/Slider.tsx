@@ -1,13 +1,13 @@
 'use client'
-import { useState } from 'react'
 import { Img } from '@/components/common/Img'
-import { Chevron } from '@/components/common/Chevron'
+import { PagerNav } from '@/components/common/PagerNav'
+import { useCycle } from '@/hooks/useCycle'
+import { pad } from '@/lib/format'
 import type { Slide } from '@/types'
 
 // 이미지 + 세로 라벨 + 캡션 + 좌우 화살표. reverse 면 좌우 반전(엔드필드 gameplay/aic 패턴).
 export function Slider({ items, label, reverse }: { items: Slide[]; label: string; reverse?: boolean }) {
-  const [i, setI] = useState(0)
-  const go = (d: number) => setI((i + d + items.length) % items.length)
+  const [i, go] = useCycle(items.length)
   const item = items[i]
   return (
     <div className={`slider${reverse ? ' is-reverse' : ''}`} data-reveal>
@@ -18,20 +18,14 @@ export function Slider({ items, label, reverse }: { items: Slide[]; label: strin
         </p>
       </div>
       <div className="slider__foot">
-        <div className="slider__nav">
-          <button type="button" onClick={() => go(-1)} aria-label="이전">
-            <Chevron dir="left" />
-          </button>
+        <PagerNav className="slider__nav" go={go}>
           <span className="slider__count">
-            {String(i + 1).padStart(2, '0')} / {String(items.length).padStart(2, '0')}
+            {pad(i + 1)} / {pad(items.length)}
           </span>
-          <button type="button" onClick={() => go(1)} aria-label="다음">
-            <Chevron dir="right" />
-          </button>
-        </div>
+        </PagerNav>
         <div className="slider__text" key={i} aria-live="polite">
           <h3>
-            <sup>{String(i + 1).padStart(2, '0')}</sup> {item.title}
+            <sup>{pad(i + 1)}</sup> {item.title}
           </h3>
           <p>{item.desc}</p>
         </div>
