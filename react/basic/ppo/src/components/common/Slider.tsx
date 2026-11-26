@@ -12,7 +12,7 @@ export function Slider({ items, label, reverse }: { items: Slide[]; label: strin
   return (
     <div className={`slider${reverse ? ' is-reverse' : ''}`} data-reveal>
       <div className="slider__stage cut">
-        <Img key={i} src={item.img} alt={item.title} className="slider__img" sizes="(max-width: 768px) 100vw, 70vw" />
+        <Img key={i} src={item.img} alt={item.title} className="slider__img" sizes="(max-width: 768px) 100vw, 70vw" pos="center bottom" />
         <p className="slider__label" aria-hidden="true">
           {label}
         </p>
