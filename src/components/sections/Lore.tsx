@@ -18,7 +18,7 @@ export function Lore({ regions }: { regions: Region[] }) {
           <span className="ring ring--1" aria-hidden="true" />
           <span className="ring ring--2" aria-hidden="true" />
           <span className="ring ring--3" aria-hidden="true" />
-          <Img key={r.en} src={r.img} alt={`${r.name} 풍경`} className="lore__img" sizes="(max-width: 768px) 100vw, 40vw" />
+          <Img key={r.en} src={r.img} alt={`${r.name} 풍경`} className="lore__img" sizes="(max-width: 768px) 100vw, 50vw" />
         </div>
         {/* key 가 바뀌면 안의 장소 선택도 처음으로 돌아감 */}
         <div className="lore__info" key={`${r.en}-i`}>

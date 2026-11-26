@@ -354,7 +354,7 @@
   display: grid;
   place-items: center;
   width: 100%;
-  max-width: 560px;
+  max-width: 720px;
   aspect-ratio: 1;
   margin: 0 auto;
 }
@@ -385,13 +385,15 @@
   }
 }
 .lore__img {
-  width: 72%;
+  width: 100%;
   aspect-ratio: 16 / 10;
   border: 1px solid var(--c-gold-line);
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
   animation: fade-in 0.8s var(--ease);
 }
 .lore__info {
+  /* 지역마다 글 길이가 달라도 화살표가 제자리에 있게: 위쪽 정렬 */
+  align-self: start;
   animation: slide-in 0.6s var(--ease);
 }
 .lore__en {
@@ -400,6 +402,10 @@
   letter-spacing: 0.04em;
   color: var(--c-white);
   width: fit-content;
+  /* 제목이 1줄이든 2줄이든 같은 높이(2줄)를 차지, 1줄이면 아래에 붙임 */
+  display: flex;
+  align-items: flex-end;
+  min-height: 2em;
 }
 .lore__sub {
   margin-top: 8px;
