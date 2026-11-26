@@ -20,10 +20,21 @@
   .side__logo br {
     display: none;
   }
+  /* nav 가 남은 폭만큼만 차지하고, 아이콘 8개가 그 폭을 나눠 가짐 (안 그러면 마지막 아이콘이 화면 밖으로 밀림) */
+  .side nav {
+    flex: 1;
+    min-width: 0;
+  }
   .side__nav {
     flex-direction: row;
     margin: 0;
     overflow-x: auto;
+  }
+  .side__nav li {
+    flex: 1;
+  }
+  .side__nav a {
+    width: 100%;
   }
   .side__label,
   .side__progress,

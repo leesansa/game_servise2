@@ -876,6 +876,9 @@ sup {
   border-right: 1px solid var(--c-gold-line);
 }
 .slider__img {
+  /* 세로 라벨이 이미지보다 길어지면(모바일) 칸 높이만큼 늘려 빈칸이 안 생기게 */
+  width: 100%;
+  min-height: 100%;
   aspect-ratio: 16 / 8;
   animation: fade-in 0.8s var(--ease);
   clip-path: inset(0);

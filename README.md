@@ -47,6 +47,7 @@ AI 도구는 구조를 설계하고 코드를 작성하고 리뷰할 때, 문서
 페이지를 요청하면 서버 컴포넌트가 DB에서 공명자, 일정, 공지 등을 **한 번에 동시에 조회**(`Promise.all`)해서 HTML로 만들어 보냅니다.
 - 배포 환경: Workers ➜ Hyperdrive(연결 풀) ➜ Neon
 - 로컬 개발: `.env`의 `DATABASE_URL`로 Neon에 바로 연결
+- 자동 배포: main 브랜치에 push하면 GitHub Actions가 lint와 빌드를 거쳐 Cloudflare Workers에 배포 (`.github/workflows/deploy.yml`)
 
 사이드바 섹션 목록처럼 화면 구조에 해당하는 값은 DB가 아니라 코드(`src/lib/data.ts`)에 두었습니다.
 
@@ -126,7 +127,7 @@ npm install
 npm run db:setup   # 테이블 생성 + 초기 데이터 (기존 데이터는 지워짐)
 npm run dev        # http://localhost:3000
 npm run build
-npm run deploy     # Cloudflare Workers 배포
+npm run deploy     # Cloudflare Workers 수동 배포 (보통은 main 에 push 하면 자동 배포)
 npm run lint
 ```
 
