@@ -27,9 +27,9 @@
 | 구분 | 사용한 기술 |
 | --- | --- |
 | **언어** | <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript"> <img src="https://img.shields.io/badge/CSS-663399?style=for-the-badge&logo=css&logoColor=white" alt="CSS"> <img src="https://img.shields.io/badge/SQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" alt="SQL"> |
-| **프론트엔드** | <img src="https://img.shields.io/badge/React_19-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React"> <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js"> <img src="https://img.shields.io/badge/Vite_(vinext)-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite"> |
-| **DB** | <img src="https://img.shields.io/badge/Neon-00E599?style=for-the-badge&logo=neon&logoColor=black" alt="Neon"> <img src="https://img.shields.io/badge/postgres.js-336791?style=for-the-badge&logo=postgresql&logoColor=white" alt="postgres.js"> |
-| **배포** | <img src="https://img.shields.io/badge/Cloudflare_Workers-F38020?style=for-the-badge&logo=cloudflare&logoColor=white" alt="Cloudflare Workers"> <img src="https://img.shields.io/badge/Hyperdrive-F38020?style=for-the-badge&logo=cloudflare&logoColor=white" alt="Hyperdrive"> |
+| **프론트엔드** | <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React"> <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js"> |
+| **DB** | <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL"> <img src="https://img.shields.io/badge/Neon-00E599?style=for-the-badge&logo=neon&logoColor=black" alt="Neon"> <img src="https://img.shields.io/badge/Hyperdrive-F38020?style=for-the-badge&logo=cloudflare&logoColor=white" alt="Hyperdrive"> |
+| **배포** | <img src="https://img.shields.io/badge/Cloudflare_Workers-F38020?style=for-the-badge&logo=cloudflare&logoColor=white" alt="Cloudflare Workers"> |
 | **AI 도구** | <img src="https://img.shields.io/badge/Claude-D97757?style=for-the-badge&logo=claude&logoColor=white" alt="Claude"> |
 
 AI 도구는 구조를 설계하고 코드를 작성하고 리뷰할 때, 문서를 정리할 때 함께 사용했습니다.
@@ -42,8 +42,7 @@ AI 도구는 구조를 설계하고 코드를 작성하고 리뷰할 때, 문서
   <b>브라우저</b> &nbsp;➜&nbsp; <b>Cloudflare Workers</b> (Next.js 서버 컴포넌트) &nbsp;➜&nbsp; <b>Hyperdrive</b> &nbsp;➜&nbsp; <b>DB</b> (Neon)
 </p>
 
-페이지를 요청하면 서버 컴포넌트가 DB에서 공명자, 일정, 공지 등을 **한 번에 동시에 조회**(`Promise.all`)해서 HTML로 만들어 보냅니다. 따로 API 서버를 두지 않고, Next.js 앱을 vinext로 빌드해 Cloudflare Workers에 바로 올렸습니다.
-
+페이지를 요청하면 서버 컴포넌트가 DB에서 공명자, 일정, 공지 등을 **한 번에 동시에 조회**(`Promise.all`)해서 HTML로 만들어 보냅니다.
 - 배포 환경: Workers ➜ Hyperdrive(연결 풀) ➜ Neon
 - 로컬 개발: `.env`의 `DATABASE_URL`로 Neon에 바로 연결
 
