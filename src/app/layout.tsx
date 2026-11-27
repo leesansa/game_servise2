@@ -19,7 +19,7 @@ const serif = Noto_Serif_KR({ weight: ['500', '700', '900'], preload: false, var
 
 export const metadata: Metadata = {
   title: '명조: 워더링 웨이브 — 포트폴리오',
-  description: '엔드필드 스타일로 만든 명조: 워더링 웨이브 비공식 포트폴리오 페이지',
+  description: '명조: 워더링 웨이브 비공식 포트폴리오 페이지',
   icons: { icon: '/favicon.svg' },
 }
 
